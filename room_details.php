@@ -1,3 +1,4 @@
+<?php require_once('classes/Display.php'); ?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -21,35 +22,23 @@
 				<div class="col-sm-7">
 					<div id="myCarousel" class="carousel slide" data-ride="carousel">
   <!-- Indicators -->
+  <?php 
+    $room_type = $display->get_room_type($_GET['room_id']); 
+    $image_count = $display->count_files($room_type);
+  ?>
   <ol class="carousel-indicators">
-    <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
-    <li data-target="#myCarousel" data-slide-to="1"></li>
-    <li data-target="#myCarousel" data-slide-to="2"></li>
-    <li data-target="#myCarousel" data-slide-to="3"></li>
-    <li data-target="#myCarousel" data-slide-to="4"></li>
-    <li data-target="#myCarousel" data-slide-to="5"></li>
+    <?php for($i = 0; $i < $image_count; $i++) : ?>
+      <li data-target="#myCarousel" data-slide-to="<?= $i; ?>" <?= ($i == 0) ? 'class="active"' : ''; ?>></li>
+    <?php endfor; ?>
   </ol>
 
   <!-- Wrapper for slides -->
   <div class="carousel-inner">
-    <div class="item active">
-      <img src="image/Delux Room Single Bed Ac Room/img1.jpg"class="thumbnail" alt="img1">
-    </div>
-    <div class="item">
-      <img src="image/Delux Room Single Bed Ac Room/img2.jpg"class="thumbnail" alt="im2">
-    </div>
-    <div class="item">
-       <img src="image/Delux Room Single Bed Ac Room/img3.jpg"class="thumbnail" alt="im3">
-    </div>
-    <div class="item">
-       <img src="image/Delux Room Single Bed Ac Room/img4.jpg"class="thumbnail" alt="img4">
-    </div>
-    <div class="item">
-       <img src="image/Delux Room Single Bed Ac Room/img5.jpg"class="thumbnail" alt="img5">
-    </div>
-    <div class="item">
-       <img src="image/Delux Room Single Bed Ac Room/img7.jpg"class="thumbnail" alt="img7">
-    </div>
+    <?php for($j = 0; $j < $image_count; $j++) : ?>
+      <div class="<?= ($j == 0) ? 'item active' : 'item'; ?>">
+        <img src="<?= $display->get_files($room_type)[$j]; ?>"class="thumbnail" alt="img<?= $j + 1; ?>">
+      </div>
+    <?php endfor; ?>
   </div>
   <!-- Left and right controls -->
   <a class="left carousel-control" href="#myCarousel" data-slide="prev">
