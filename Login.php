@@ -3,7 +3,7 @@
 	error_reporting(1);
 
 	if($_SESSION['create_account_logged_in']!=""){
-		header('location:Booking Form.php');
+		header('location:booking_form.php');
 	}
 
 	error_reporting(1);
@@ -17,7 +17,7 @@
 			$sql=mysqli_query($con,"select * from create_account where email='$eid' && password='$pass' ");
 			if(mysqli_num_rows($sql)){
 			$_SESSION['create_account_logged_in']=$eid;  
-			header('location:Booking Form.php'); 
+			header('location:booking_form.php'); 
 			} else{
 				$error= "<h4 style='color:red'>Invalid login details</h4>"; 
 			} 
@@ -38,7 +38,7 @@
 		<link href="https://fonts.googleapis.com/css?family=Akronim|Libre+Baskerville" rel="stylesheet">
 	</head>
 	<body style="margin-top:50px;">
-		<?php include('Menu Bar.php'); ?>
+		<?php include('menu_bar.php'); ?>
 		<div class="container-fluid"><!-- Primary Id-->
   		<div class="container">
     		<div class="row"><br>
@@ -64,6 +64,6 @@
     			</div><br>
   			</div>
 		</div>
-		<?php include('Footer.php'); ?>
+		<?php include('footer.php'); ?>
 	</body>
 </html>

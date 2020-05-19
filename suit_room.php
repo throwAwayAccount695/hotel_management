@@ -13,7 +13,7 @@
 </head>
 <body style="margin-top:50px;">
 	<?php
-      include('Menu Bar.php')
+      include('menu_bar.php');
   ?><br><br><br>
 	<div class="container-fluid"style="margin-top:2%;">
 		<div class="continer">
@@ -33,23 +33,23 @@
   <!-- Wrapper for slides -->
   <div class="carousel-inner">
     <div class="item active">
-      <img src="image/Twin Delux Room/img1.jpg"class="thumbnail" alt="img1">
+      <img src="image/Suit Room/img1.jpg"class="thumbnail" alt="img1">
     </div>
 
     <div class="item">
-      <img src="image/Twin Delux Room/img2.jpg"class="thumbnail" alt="im2">
+      <img src="image/Suit Room/img2.jpg"class="thumbnail" alt="im2">
     </div>
 
     <div class="item">
-       <img src="image/Twin Delux Room/img3.jpg"class="thumbnail" alt="im3">
+       <img src="image/Suit Room/img3.jpg"class="thumbnail" alt="im3">
     </div>
 
     <div class="item">
-       <img src="image/Twin Delux Room/img4.jpg"class="thumbnail" alt="img4">
+       <img src="image/Suit Room/img4.jpg"class="thumbnail" alt="img4">
     </div>
 
     <div class="item">
-       <img src="image/Twin Delux Room/img5.jpg"class="thumbnail" alt="img5">
+       <img src="image/Suit Room/img5.jpg"class="thumbnail" alt="img5">
     </div>
   </div>
 
@@ -63,8 +63,8 @@
     <span class="sr-only">Next</span>
   </a>
 </div>
-		<h2 class="Ac_Room_Text">Twin Delux Room</h2>
-		<p class="text-justify">The Contemporary yet simple designed twin bedded rooms are well equipped with modern amenities. Fresh Decor and refined ambiance is the winning combination to make these rooms an ideal choice for discerning business traveler.</p>
+		<h2 class="Ac_Room_Text">Suit Room</h2>
+		<p class="text-justify">Enjoy the view of Anand from attach sitting area, An upgraded version of the Deluxe room, these rooms offer an elegant design with larger room space..</p>
     <div class="row">
       <h2>Amenities</h2>
       <img src="image/icon/wifi.png">

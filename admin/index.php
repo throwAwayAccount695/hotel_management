@@ -39,7 +39,7 @@ if(isset($login))
 </head>
 <body id="primary"style="margin-top:50px;">
 	<?php
-include('Menu Bar.php');
+include('menu Bar.php');
 	?>
 <div class="container-fluid"> <!-- Primary Id-->
   <div class="container">

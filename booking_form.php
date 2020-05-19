@@ -1,9 +1,9 @@
 <?php 
-include('Menu Bar.php');
-include('connection.php');
+  include('menu_bar.php');
+  include('connection.php');
 if($eid=="")
 {
-header('location:Login.php');
+  header('location:Login.php');
 }
 $sql= mysqli_query($con,"select * from room_booking_details where email='$eid' "); 
 $result=mysqli_fetch_assoc($sql);
@@ -45,7 +45,7 @@ if(isset($savedata))
 </head>
 <body style="margin-top:50px;">
   <?php
-  include('Menu Bar.php');
+  include('menu_bar.php');
   ?>
 <div class="container-fluid text-center"id="primary"><!--Primary Id-->
   <h1>[ BOOKING Form ]</h1><br>
