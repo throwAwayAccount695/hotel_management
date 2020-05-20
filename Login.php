@@ -14,10 +14,11 @@
 		if($eid=="" || $pass==""){
 			$error= "<h4 style='color:red'>fill all details</h4>";  
 		} else{
-			$sql=mysqli_query($con,"select * from create_account where email='$eid' && password='$pass' ");
+			$password = md5($pass . "JK23!");
+			$sql=mysqli_query($con,"SELECT * FROM create_account where email='$eid' && password='$password' ");
 			if(mysqli_num_rows($sql)){
-			$_SESSION['create_account_logged_in']=$eid;  
-			header('location:booking_form.php'); 
+				$_SESSION['create_account_logged_in']=$eid;  
+				header('location:booking_form.php'); 
 			} else{
 				$error= "<h4 style='color:red'>Invalid login details</h4>"; 
 			} 
@@ -56,8 +57,8 @@
 							</div>
 							<input type="submit" value="Login" name="login" class="btn btn-primary btn-group btn-group-justified"required>
 							<div class="form-group forget">
-								<a href="Forgot account.php">Forget Account</a>&nbsp; <b>|</b>&nbsp; 
-								<a href="Registation form.php">Create an Account</a>
+								<a href="forgot_account.php">Forget Account</a>&nbsp; <b>|</b>&nbsp; 
+								<a href="registation_form.php">Create an Account</a>
 							</div>
 						</form><br>
         		</div>

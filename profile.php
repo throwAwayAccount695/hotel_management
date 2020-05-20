@@ -6,9 +6,15 @@ $eid=$_SESSION['create_account_logged_in'];
 extract($_REQUEST);
 if(isset($update))
 {
-$que="update create_account set name='$name',password='$pass',mobile='$mob',address='$add' where email='$eid'";
-mysqli_query($con,$que);
-$msg= "<h3 style='color:blue'>Profile Updated successfully</h3>";
+  if($pass != '********'){ 
+    $salt = $pass . "JK23!";
+    $password = "password='" . md5($salt) . "',";
+  } else {
+    $password = '';
+  }
+  $que="UPDATE create_account SET name='$name',$password mobile='$mob',address='$add' WHERE email='$eid'";
+  mysqli_query($con,$que);
+  $msg= "<h3 style='color:blue'>Profile Updated successfully</h3>";
 }
 ?>
 <!DOCTYPE html>
@@ -61,7 +67,7 @@ $msg= "<h3 style='color:blue'>Profile Updated successfully</h3>";
            <div class="row">
               <div class="control-label col-sm-4"><h4>Password:</h4></div>
                 <div class="col-sm-8">
-                 <input type="text" name="pass" value="<?php echo $result['password']; ?>"class="form-control"/>
+                 <input type="text" name="pass" value="********"class="form-control"/>
           </div>
         </div>
       </div>
