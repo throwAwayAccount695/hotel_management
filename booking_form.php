@@ -5,14 +5,14 @@ if($eid=="")
 {
   header('location:Login.php');
 }
-$sql= mysqli_query($con,"select * from room_booking_details where email='$eid' "); 
+$sql= mysqli_query($con,"SELECT * FROM room_booking_details WHERE email='$eid' "); 
 $result=mysqli_fetch_assoc($sql);
 //print_r($result);
 extract($_REQUEST);
 error_reporting(1);
 if(isset($savedata))
 {
-  $sql= mysqli_query($con,"select * from room_booking_details where email='$email' and room_type='$room_type' ");
+  $sql= mysqli_query($con,"SELECT * FROM room_booking_details WHERE email='$email' AND room_type='$room_type' ");
   if(mysqli_num_rows($sql)) 
   {
   $msg= "<h1 style='color:red'>You have already booked this room</h1>";    
@@ -44,9 +44,6 @@ if(isset($savedata))
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
 <body style="margin-top:50px;">
-  <?php
-  include('menu_bar.php');
-  ?>
 <div class="container-fluid text-center"id="primary"><!--Primary Id-->
   <h1>[ BOOKING Form ]</h1><br>
   <div class="container">

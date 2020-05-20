@@ -42,5 +42,5 @@
         }
     }
 
-    $display = new Display(new Hotel_model($con));
+    $display = new Display(new Hotel_model($db->conn));
 ?>

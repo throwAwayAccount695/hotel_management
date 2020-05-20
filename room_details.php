@@ -76,7 +76,6 @@ $res=mysqli_fetch_assoc($sql);
 					<div class="panel-body-right text-center">
     <!--Fatch Mysql Database Select Query Room Details -->
 						<?php
-            include('connection.php');
             $sql1=mysqli_query($con,"select * from rooms");
            while($result1= mysqli_fetch_assoc($sql1))
            {

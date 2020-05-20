@@ -1,4 +1,4 @@
-<?php require_once('connection.php');
+<?php require_once('Database.php');
 
     class Hotel_model{
         private $conn;
