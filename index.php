@@ -1,7 +1,7 @@
 <?php 
 session_start();
 error_reporting(1);
-include('connection.php');
+require_once('classes/Display.php');
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -31,41 +31,26 @@ include('connection.php');
     <!-- Wrapper for slides -->
 
     <div class="carousel-inner" role="listbox">
-      <?php
-		$i=1;
-	  $sql=mysqli_query($con,"select * from slider");
-		while($slider=mysqli_fetch_assoc($sql))
-		{
-		$slider_img=$slider['image'];
-		$slider_cap=$slider['caption'];
-		$path="image/Slider/$slider_img";	
-			if($i==1)
-			{	
-		?>
-	  <div class="item active">
-        <img src="<?php echo $path; ?>" alt="Image">
-        <div class="carousel-caption">
-			<h2><?php echo $slider_cap; ?></h2>
-		</div>      
-      </div>
-		<?php 
-		} 
-		else 
-			{
-			?>	
-		<div class="item">
-        <img src="<?php echo $path; ?>" alt="Image">
-        <div class="carousel-caption">
-        <h2><?php echo $slider_cap; ?></h2>
-		</div>      
-      </div>	
-				
-		<?php	} ?>
-	  
-	  
-		<?php $i++; } ?>
-      
-	  
+    <?php
+      $slider = $display->select_all("slider");
+      $path="image/Slider/";
+      for($i = 0; $i < count($slider); $i++) : 
+        if($i == 0) : ?>
+          <div class="item active">
+            <img src="<?php echo $path . $slider[$i]['image']; ?>" alt="Image">
+            <div class="carousel-caption">
+              <h2><?php echo $slider[$i]['caption']; ?></h2>
+            </div>      
+          </div>
+        <?php else: ?>	
+          <div class="item">
+            <img src="<?php echo $path . $slider[$i]['image']; ?>" alt="Image">
+            <div class="carousel-caption">
+              <h2><?php echo $slider[$i]['caption'] ?></h2>
+            </div>      
+          </div>	
+        <?php endif; ?>
+      <?php	endfor; ?>	  
     </div>
 
     
@@ -88,18 +73,16 @@ include('connection.php');
     <div class="hov"><!--Hov is Class-->
     
 	
-	<?php 
-	$sql=mysqli_query($con,"select * from rooms");
-	while($r_res=mysqli_fetch_assoc($sql))
-	{
-	?>
-	<div class="col-sm-4">
-      <img src="image/rooms/<?php echo $r_res['image']; ?>"class="img-responsive thumbnail"alt="Image"id="img1"> <!--Id Is Img-->
-      <h4 class="Room_Text">[ <?php echo $r_res['type']; ?>]</h4>
-      <p class="text-justify"><?php echo substr($r_res['details'],0,100); ?></p><br>
-	    <a href="room_details.php?room_id=<?php echo $r_res['room_id']; ?>" class="btn btn-danger text-center">Read more</a><br><br>
+<?php 
+  $rooms = $display->select_all("rooms");
+  for($j = 0; $j < count($rooms); $j++) : ?>
+    <div class="col-sm-4">
+      <img src="image/rooms/<?php echo $rooms[$j]['image']; ?>"class="img-responsive thumbnail"alt="Image"id="img1"> <!--Id Is Img-->
+      <h4 class="Room_Text">[ <?php echo $rooms[$j]['type']; ?>]</h4>
+      <p class="text-justify"><?php echo substr($rooms[$j]['details'],0,100); ?></p><br>
+      <a href="room_details.php?room_id=<?php echo $rooms[$j]['room_id']; ?>" class="btn btn-danger text-center">Read more</a><br><br>
     </div>
-	<?php } ?>
+  <?php endfor; ?>
   </div>
   </div>
 </div>
