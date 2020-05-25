@@ -20,8 +20,12 @@
         }
 
         public function sql_query($sql){
+            $arr = NULL; 
             $result = mysqli_query($this->conn, $sql);
-            return mysqli_fetch_assoc($result);
+            while($res = mysqli_fetch_assoc($result)){
+                $arr[] = $res;
+            }
+            return $arr;
         }
     }
 ?>

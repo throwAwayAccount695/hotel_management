@@ -51,16 +51,17 @@
   </a>
 </div>
 <?php 
-include('connection.php');
-$room_id=$_GET['room_id'];
-$sql=mysqli_query($con,"select * from rooms where room_id='$room_id' ");
-$res=mysqli_fetch_assoc($sql);
-?>
+$rooms = $display->select_all("rooms");
 
-		<h2 class="Ac_Room_Text"><?php echo $res['type']; ?></h2>
-    <h3 class="Ac_Room_Text"><?php echo $res['price']; ?></h3>
+for($l = 0; $l < count($rooms); $l++) : 
+  if($rooms[$l]["room_id"] == $_GET["room_id"]) : ?>
+		<h2 class="Ac_Room_Text"><?php echo $rooms[$l]['type']; ?></h2>
+    <h3 class="Ac_Room_Text"><?php echo $rooms[$l]['price']; ?></h3>
 		<p class="text-justify">
-      <?php echo $res['details']; ?>
+      <?php echo $rooms[$l]['details']; 
+  endif; ?>
+<?php endfor; ?>
+
 </p>
     <div class="row">
       <h2>Amenities & Facilities</h2>
@@ -74,16 +75,13 @@ $res=mysqli_fetch_assoc($sql);
 						<h4 align="center">Room Type</h4>
 					</div><br>
 					<div class="panel-body-right text-center">
-    <!--Fatch Mysql Database Select Query Room Details -->
+    <!--Fetch Mysql Database Select Query Room Details -->
 						<?php
-            $sql1=mysqli_query($con,"select * from rooms");
-           while($result1= mysqli_fetch_assoc($sql1))
-           {
-
+            for($k = 0; $k < count($rooms); $k++){
             ?>
-            <a href="room_details.php?room_id=<?php echo $result1['room_id']; ?>"><?php echo $result1['type']; ?></a><hr>
+            <a href="room_details.php?room_id=<?php echo $rooms[$k]['room_id']; ?>"><?php echo $rooms[$k]['type']; ?></a><hr>
             <?php } ?>
-    <!--Fatch Mysql Database Select Query Room Details -->
+    <!--Fetch Mysql Database Select Query Room Details -->
     					
 					</div>
 				</div>

@@ -21,6 +21,17 @@
 				<div class="col-sm-2"></div>
 				<div class="col-sm-7">
 					<div id="myCarousel" class="carousel slide" data-ride="carousel">
+
+
+
+
+
+        <!-- USELESS FILE!!!!!!! -->
+
+
+
+
+
   <!-- Indicators -->
   <ol class="carousel-indicators">
     <li data-target="#myCarousel" data-slide-to="0" class="active"></li>

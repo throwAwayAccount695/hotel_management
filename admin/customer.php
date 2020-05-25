@@ -19,7 +19,12 @@
 
 <?php 
 $i=1;
-$sql=mysqli_query($con,"select * from customer");
+
+
+// USELESS FILE!!!!
+
+
+$sql=mysqli_query($con,"SELECT * FROM customer");
 while($res=mysqli_fetch_assoc($sql))
 {
 ?>

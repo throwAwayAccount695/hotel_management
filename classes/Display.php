@@ -7,11 +7,16 @@
             $this->model = $class;
         }
 
+        public function select_all($table){
+            $sql = $this->model->get_content($table);
+            return $this->model->sql_query($sql);
+        }
+
         public function get_room_type($id){
             $sql = $this->model->get_content('rooms');
             $sql = $sql . $this->model->get_where(array('room_id' => $id));
             $data = $this->model->sql_query($sql);
-            $string = $data['type'];
+            $string = $data[0]['type'];
             $string = str_replace(' ', '_', $string);
             $string = strtolower($string);
 
@@ -43,4 +48,6 @@
     }
 
     $display = new Display(new Hotel_model($db->conn));
+
+    $display->select_all("rooms");
 ?>

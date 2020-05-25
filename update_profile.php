@@ -9,6 +9,15 @@ $i=1;
 $sql=mysqli_query($con,"select * from create_account where email='$eid'");
 $result=mysqli_fetch_assoc($sql);
 
+
+
+
+
+//USELESS FILE !!!!!!
+
+
+
+
 extract($_REQUEST);
 if(isset($update))
 {
