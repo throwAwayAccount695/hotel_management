@@ -20,6 +20,17 @@
             return $result;
         }
 
+        public function delete_row($table, $where){
+            $where_str = '';
+            foreach ($where as $key => $value) {
+                $where_str .= $key . '=' . "'$value',";
+            }
+            $where_str = rtrim($where_str, ',');
+            $sql = "DELETE FROM $table WHERE $where_str";
+            $result = $this->model->delete_sql($sql);
+            return $result;
+        }
+
         public function get_room_type($id){
             $sql = $this->model->get_content('rooms');
             $sql = $sql . $this->model->get_where(array('room_id' => $id));

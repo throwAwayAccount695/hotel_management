@@ -1,9 +1,12 @@
 <?php 
-    include('connection.php');
+require_once('classes/Display.php');
+if(!isset($_GET['order_id'])){
+    header('location:index.php');
+} else{
     $oid = $_GET['order_id'];
-    $q = mysqli_query($con,"DELETE FROM room_booking_details WHERE id='$oid' ");
-
-    if($q){
+    $bool = $display->delete_row("room_booking_details", array("id" => $oid));
+    if($bool){
         header('location:order.php');
     }
+}
 ?>

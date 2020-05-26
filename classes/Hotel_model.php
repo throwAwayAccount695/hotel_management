@@ -39,5 +39,13 @@
                 return FALSE;
             }
         }
+
+        public function delete_sql($sql){
+            if(mysqli_query($this->conn, $sql)){
+                return TRUE;
+            } else {
+                return FALSE;
+            }
+        }
     }
 ?>
