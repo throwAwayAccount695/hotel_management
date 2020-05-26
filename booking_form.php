@@ -1,6 +1,5 @@
 <?php 
 include('menu_bar.php');
-include('connection.php');
 require_once('classes/Display.php');
 if($eid==""){ header('location:Login.php'); }
 
