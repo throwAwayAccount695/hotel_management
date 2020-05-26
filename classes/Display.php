@@ -7,9 +7,17 @@
             $this->model = $class;
         }
 
-        public function select_all($table){
+        public function select_all($table, $clean = FALSE){
             $sql = $this->model->get_content($table);
-            return $this->model->sql_query($sql);
+            return $this->model->sql_query($sql, $clean);
+        }
+
+        public function insert_into($table, $columns, $values){
+            $columns_str = implode(',', $columns);
+            $values_str = implode("','", $values);
+            $sql = "INSERT INTO $table ($columns_str) VALUES ('$values_str')";
+            $result = $this->model->insert_sql($sql);
+            return $result;
         }
 
         public function get_room_type($id){
