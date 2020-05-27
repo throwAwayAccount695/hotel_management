@@ -2,9 +2,14 @@
 
     class Hotel_model{
         private $conn;
+        private $salt = "JK23!";
 
         function __construct($conn){
             $this->conn = $conn;
+        }
+
+        public function get_salt_string(){
+            return $this->salt;
         }
 
         public function get_content($table){

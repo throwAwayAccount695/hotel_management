@@ -64,6 +64,10 @@
                 return 0;
             }
         }
+
+        public function get_salt(){
+            return $this->model->get_salt_string();
+        }
     }
 
     $display = new Display(new Hotel_model($db->conn));
