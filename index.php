@@ -29,7 +29,6 @@ require_once('classes/Display.php');
     <!--Indicators Close Here-->
 
     <!-- Wrapper for slides -->
-
     <div class="carousel-inner" role="listbox">
     <?php
       $slider = $display->select_all("slider");
@@ -77,7 +76,7 @@ require_once('classes/Display.php');
   $rooms = $display->select_all("rooms");
   for($j = 0; $j < count($rooms); $j++) : ?>
     <div class="col-sm-4">
-      <img src="image/rooms/<?php echo $rooms[$j]['image']; ?>"class="img-responsive thumbnail"alt="Image"id="img1"> <!--Id Is Img-->
+      <img src="image/rooms/<?php echo $rooms[$j]['image']; ?>"class="img-responsive thumbnail"alt="Image"id="img1"> <!--Id Is Img1-->
       <h4 class="Room_Text">[ <?php echo $rooms[$j]['type']; ?>]</h4>
       <p class="text-justify"><?php echo substr($rooms[$j]['details'],0,100); ?></p><br>
       <a href="room_details.php?room_id=<?php echo $rooms[$j]['room_id']; ?>" class="btn btn-danger text-center">Read more</a><br><br>

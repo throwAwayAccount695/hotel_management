@@ -89,8 +89,6 @@ for($l = 0; $l < count($rooms); $l++) :
 			</div>
 		</div>
 	</div>
-  <?php
-      include('footer.php')
-  ?>
+  <?php include('footer.php'); ?>
 </body>
 </html>

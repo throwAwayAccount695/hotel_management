@@ -26,7 +26,7 @@
         <center><img src="image/clipart/user.png" class="img-circle" alt="Bird" width="200" height="130"></center>
       </div>
       <div class="modal-body">
-        <form>
+          <form>
               <div class="form-group">
                 <input type="Email" class="form-control" id="#"placeholder="Email Id" required>
               </div>

@@ -31,7 +31,7 @@ $eid=$_SESSION['create_account_logged_in'];
                     <th>Email</th>
                     <th>Mobile Number</th>
                     <th>Address</th>
-                    <th>Contury</th>
+                    <th>Country</th>
                     <th>Room Type</th>
                     <th>Check In Date</th>
                     <th>Check In Time</th>
@@ -50,7 +50,7 @@ echo "<td>".$result['name']."</td>";
 echo "<td>".$result['email']."</td>";
 echo "<td>".$result['phone']."</td>";
 echo "<td>".$result['address']."</td>";
-echo "<td>".$result['contry']."</td>";
+echo "<td>".$result['country']."</td>";
 echo "<td>".$result['room_type']."</td>";
 echo "<td>".$result['check_in_date']."</td>";
 echo "<td>".$result['check_in_time']."</td>";

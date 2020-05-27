@@ -1,19 +1,15 @@
 <?php 
 include('connection.php');
+require_once('classes/Display.php');
 error_reporting(1);
 extract($_REQUEST);
-if(isset($submit))
-{
-  $sql=mysqli_query($con,"select * from create_account where email='$email' ");
-    if(mysqli_num_rows($sql))
-    {
-     $res=mysqli_fetch_assoc($sql); 
-    $error= "<h3 style='color:blue'>Your Passwrod is :".$res['password']."</h3>"; 
-    }
-    else
-    {
+if(isset($submit)){
+  $sql = $display->select_all("create_account WHERE email = '$email'");
+  if(!empty($sql)){
+    $error= "<h3 style='color:blue'>Your Passwrod is: ".$sql[0]['password']."</h3>"; 
+  } else{
     $error= "<h3 style='color:red'>Invalid  details</h3>"; 
-    }  
+  }  
 }
 ?>  
 <!DOCTYPE html>
@@ -29,30 +25,25 @@ if(isset($submit))
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
 <body style="margin-top:50px;">
-<?php
-include('menu_bar.php');
-?>
-<div class="container-fluid"id="primary"> <!-- Primary Id-->
-  <div class="container">
-    <div class="row">
-      <div class="col-sm-3"></div>
+  <?php include('menu_bar.php'); ?>
+  <div class="container-fluid"id="primary"> <!-- Primary Id-->
+    <div class="container">
+      <div class="row">
+        <div class="col-sm-3"></div>
         <div class="col-sm-6">
           <h1 style="margin-top:50px;padding-top:50px;">Forgot Account?</h1><hr>
           <?php echo  @$error; ?>
-          <p class="text-center">Please Enter your Email-id or Phone Number to Find Your Account.</p><br><br>
+          <p class="text-center">Please Enter your Email to reset your Password.</p><br><br>
           <form method="post">
-        <div class="form-group">
-          <input type="Email" name="email" class="form-control" id="#"placeholder="Email Id or Phone Number"required>
-        </div><hr>
-          <input type="submit" value="submit" name="submit" class="btn btn-primary btn-group-justified"required>
-        </form><br><br><br><br>  
+            <div class="form-group">
+              <input type="Email" name="email" class="form-control" id="#"placeholder="Enter Your Email"required>
+            </div><hr>
+            <input type="submit" value="submit" name="submit" class="btn btn-primary btn-group-justified"required>
+          </form><br><br><br><br>  
         </div>
+      </div>
     </div>
   </div>
-</div>
-
-<?php
-include('Footer.php')
-?>
+  <?php include('Footer.php'); ?>
 </body>
 </html>
