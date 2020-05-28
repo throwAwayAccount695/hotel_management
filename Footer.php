@@ -3,7 +3,7 @@ require_once('classes/Display.php');
 extract($_REQUEST);
 
 if(isset($send)){
-  $display->insert_into("feedback", array('name', 'email', 'mobile', 'message'), array($name, $email, $phone, $message));
+  $display->insert_into("feedback", array('name', 'email', 'mobile', 'message'), array($name_foot, $email_foot, $phone_foot, $message));
   $msg_foot = "<h4 style='color:green;'>feedback sent successfully</h4>";
 }
 ?>
@@ -37,13 +37,13 @@ if(isset($send)){
           <div class="feedback">
             <form method="post"><br>
               <div class="form-group">
-                <input type="text" name="name" class="form-control" id="#"placeholder="Enter Your Name"required>
+                <input type="text" name="name_foot" class="form-control" id="#"placeholder="Enter Your Name"required>
               </div>
               <div class="form-group">
-                <input type="Email" name="email" class="form-control" id="#"placeholder="Enter Your Email"required>
+                <input type="Email" name="email_foot" class="form-control" id="#"placeholder="Enter Your Email"required>
               </div>
               <div class="form-group">
-                <input type="Number" name="phone" class="form-control" id="#"placeholder="Enter Your Phone Number"required>
+                <input type="Number" name="phone_foot" class="form-control" id="#"placeholder="Enter Your Phone Number"required>
               </div>
               <div class="form-group">
                 <textarea name="message" class="form-control" id="#"placeholder="Type Your Message"required></textarea>

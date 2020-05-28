@@ -31,6 +31,22 @@
             return $result;
         }
 
+        public function update($table, $set_values, $where){
+            $set_values_str = "";
+            $where_str = "";
+            foreach ($set_values as $key => $value) {
+                $set_values_str .= $key . "='" . $value . "',";   
+            }
+            foreach ($where as $key => $value) {
+                $where_str .= $key . "='" . $value . "' && ";   
+            }
+            $set_values_str = rtrim($set_values_str, ',');
+            $where_str = rtrim($where_str, '&& ');
+            $sql = "UPDATE $table SET $set_values_str WHERE $where_str";
+            $result = $this->model->update_sql($sql);
+            return $result;
+        }
+
         public function get_room_type($id){
             $sql = $this->model->get_content('rooms');
             $sql = $sql . $this->model->get_where(array('room_id' => $id));
@@ -71,6 +87,4 @@
     }
 
     $display = new Display(new Hotel_model($db->conn));
-
-    $display->select_all("rooms");
 ?>

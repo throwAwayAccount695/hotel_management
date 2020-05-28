@@ -52,5 +52,13 @@
                 return FALSE;
             }
         }
+
+        public function update_sql($sql){
+            if(mysqli_query($this->conn, $sql)){
+                return TRUE;
+            } else {
+                return FALSE;
+            }
+        }
     }
 ?>
