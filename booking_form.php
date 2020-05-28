@@ -1,7 +1,7 @@
 <?php 
 include('menu_bar.php');
 require_once('classes/Display.php');
-if($eid==""){ header('location:Login.php'); }
+if($eid == ""){ header('location:Login.php'); }
 
 $res = $display->select_all("create_account WHERE email='$eid' ");
 $result = $res[0];
@@ -10,13 +10,13 @@ extract($_REQUEST);
 error_reporting(1);
 
 if(isset($savedata)){
-  $sql = $display->select_all("room_booking_details WHERE email='$email' AND room_type='$room_type' ", TRUE);
+  $sql = $display->select_all("room_booking_details WHERE email='$email' AND room_type='$room_type'", TRUE);
   if(mysqli_num_rows($sql)){
     $msg= "<h1 style='color:red'>You have already booked this room</h1>";    
   } else{
     $result_bool = $display->insert_into(
       "room_booking_details", 
-      array("name", "email", "phone", "address", "city", "state", "zip", "contry,room_type", "Occupancy", "check_in_date", "check_in_time", "check_out_date"), 
+      array("name", "email", "phone", "address", "city", "state", "zip", "country", "room_type", "Occupancy", "check_in_date", "check_in_time", "check_out_date"), 
       array($name, $email, $phone, $address, $city, $state, $zip, $country, $room_type, $Occupancy, $cdate, $ctime, $codate));
     if($result_bool){
       $msg= "<h1 style='color:blue'>You have Successfully booked this room</h1><h2><a href='order.php'>View </a></h2>"; 

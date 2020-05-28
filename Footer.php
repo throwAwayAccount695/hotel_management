@@ -3,8 +3,8 @@ require_once('classes/Display.php');
 extract($_REQUEST);
 
 if(isset($send)){
-  $display->insert_into("feedback", array('name', 'email', 'mobile', 'message'), array($name, $email, $phone, $msg));
-  $msg= "<h4 style='color:green;'>feedback sent successfully</h4>";
+  $display->insert_into("feedback", array('name', 'email', 'mobile', 'message'), array($name, $email, $phone, $message));
+  $msg_foot = "<h4 style='color:green;'>feedback sent successfully</h4>";
 }
 ?>
 <!-- Footer1 Start Here-->
@@ -33,7 +33,7 @@ if(isset($send)){
       <div class="panel panel-primary">
         <div class="panel-heading">Feedback</div>
         <div class="panel-body">
-          <?php echo @$msg; ?>
+          <?php echo @$msg_foot; ?>
           <div class="feedback">
             <form method="post"><br>
               <div class="form-group">
@@ -46,7 +46,7 @@ if(isset($send)){
                 <input type="Number" name="phone" class="form-control" id="#"placeholder="Enter Your Phone Number"required>
               </div>
               <div class="form-group">
-                <textarea name="msg" class="form-control" id="#"placeholder="Type Your Message"required></textarea>
+                <textarea name="message" class="form-control" id="#"placeholder="Type Your Message"required></textarea>
               </div>
               <input type="submit" value="send" name="send" class="btn btn-primary btn-group-justified"required>
             </form>     
