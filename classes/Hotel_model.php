@@ -6,10 +6,15 @@
 
         function __construct($conn){
             $this->conn = $conn;
+            $this->conn->set_charset("utf8");
         }
 
         public function get_salt_string(){
             return $this->salt;
+        }
+
+        public function model_close_conn(){
+            $this->conn->close();
         }
 
         public function get_content($table){

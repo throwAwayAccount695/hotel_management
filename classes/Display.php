@@ -84,6 +84,10 @@
         public function get_salt(){
             return $this->model->get_salt_string();
         }
+
+        public function close_conn(){
+            $this->model->model_close_conn();
+        }
     }
 
     $display = new Display(new Hotel_model($db->conn));
