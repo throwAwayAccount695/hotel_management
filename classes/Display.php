@@ -1,4 +1,4 @@
-<?php require_once('classes/Hotel_model.php');
+<?php require_once($_SERVER['DOCUMENT_ROOT'] . '/hotel_Management/classes/Hotel_model.php');
 
     class Display{
         private $model;
