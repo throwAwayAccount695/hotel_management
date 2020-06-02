@@ -1,5 +1,6 @@
 <?php 
 $i=1;
+include('../connection.php');
 $sql=mysqli_query($con,"select * from admin");
 while($res=mysqli_fetch_assoc($sql))
 {
