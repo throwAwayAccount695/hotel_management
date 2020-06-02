@@ -10,7 +10,7 @@ if(isset($login)){
 	} else{
 	  $sql = $display->select_all("admin WHERE username='$eid' AND password='$pass'", TRUE);
 		if(mysqli_num_rows($sql)){
-		  $_SESSION['admin_logged_in'] = $eid;	
+      $_SESSION['admin_logged_in'] = $eid;
 		  header('location:dashboard.php');	
 		} else{
 		  $error= "<h3 style='color:red'>Invalid login details</h3>";	
