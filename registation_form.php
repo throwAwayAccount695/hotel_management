@@ -4,7 +4,7 @@ require_once('classes/Display.php');
 extract($_REQUEST);
 if(isset($save))
 {
-  $sql = $display->select_all("create_account where email='$email'", TRUE);
+  $sql = $display->select_all("create_account WHERE email='$email'", TRUE);
   if(mysqli_num_rows($sql)){
     $msg= "<h1 style='color:red'> account already exists</h1>";    
   } else{
@@ -17,7 +17,7 @@ if(isset($save))
       $msg= "<h1 style='color:green'>Data Saved Successfully</h1>"; 
       header('location:Login.php');
     } else{
-      $msg= "<h1 style='color:green'>Something Went Wrong</h1>"; 
+      $msg= "<h1 style='color:red'>Something Went Wrong</h1>"; 
     }
   }
 }

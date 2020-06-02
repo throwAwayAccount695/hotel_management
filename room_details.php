@@ -21,70 +21,68 @@
 				<div class="col-sm-2"></div>
 				<div class="col-sm-7">
 					<div id="myCarousel" class="carousel slide" data-ride="carousel">
-  <!-- Indicators -->
-  <?php 
-    $room_type = $display->get_room_type($_GET['room_id']); 
-    $image_count = $display->count_files($room_type);
-  ?>
-  <ol class="carousel-indicators">
-    <?php for($i = 0; $i < $image_count; $i++) : ?>
-      <li data-target="#myCarousel" data-slide-to="<?= $i; ?>" <?= ($i == 0) ? 'class="active"' : ''; ?>></li>
-    <?php endfor; ?>
-  </ol>
+            <!-- Indicators -->
+            <?php 
+              $room_type = $display->get_room_type($_GET['room_id']); 
+              $image_count = $display->count_files($room_type);
+            ?>
+            <ol class="carousel-indicators">
+              <?php for($i = 0; $i < $image_count; $i++) : ?>
+                <li data-target="#myCarousel" data-slide-to="<?= $i; ?>" <?= ($i == 0) ? 'class="active"' : ''; ?>></li>
+              <?php endfor; ?>
+            </ol>
 
-  <!-- Wrapper for slides -->
-  <div class="carousel-inner">
-    <?php for($j = 0; $j < $image_count; $j++) : ?>
-      <div class="<?= ($j == 0) ? 'item active' : 'item'; ?>">
-        <img src="<?= $display->get_files($room_type)[$j]; ?>"class="thumbnail" alt="img<?= $j + 1; ?>">
-      </div>
-    <?php endfor; ?>
-  </div>
-  <!-- Left and right controls -->
-  <a class="left carousel-control" href="#myCarousel" data-slide="prev">
-    <span class="glyphicon glyphicon-chevron-left"></span>
-    <span class="sr-only">Previous</span>
-  </a>
-  <a class="right carousel-control" href="#myCarousel" data-slide="next">
-    <span class="glyphicon glyphicon-chevron-right"></span>
-    <span class="sr-only">Next</span>
-  </a>
-</div>
-<?php 
-$rooms = $display->select_all("rooms");
+            <!-- Wrapper for slides -->
+            <div class="carousel-inner">
+              <?php for($j = 0; $j < $image_count; $j++) : ?>
+                <div class="<?= ($j == 0) ? 'item active' : 'item'; ?>">
+                  <img src="<?= $display->get_files($room_type)[$j]; ?>"class="thumbnail" alt="img<?= $j + 1; ?>">
+                </div>
+              <?php endfor; ?>
+            </div>
 
-for($l = 0; $l < count($rooms); $l++) : 
-  if($rooms[$l]["room_id"] == $_GET["room_id"]) : ?>
-		<h2 class="Ac_Room_Text"><?php echo $rooms[$l]['type']; ?></h2>
-    <h3 class="Ac_Room_Text"><?php echo $rooms[$l]['price']; ?></h3>
-		<p class="text-justify">
-      <?php echo $rooms[$l]['details']; 
-  endif; ?>
-<?php endfor; ?>
+            <!-- Left and right controls -->
+            <a class="left carousel-control" href="#myCarousel" data-slide="prev">
+              <span class="glyphicon glyphicon-chevron-left"></span>
+              <span class="sr-only">Previous</span>
+            </a>
+            <a class="right carousel-control" href="#myCarousel" data-slide="next">
+              <span class="glyphicon glyphicon-chevron-right"></span>
+              <span class="sr-only">Next</span>
+            </a>
+          </div>
 
-</p>
-    <div class="row">
-      <h2>Amenities & Facilities</h2>
-      <img src="image/icon/wifi.png"class="img-responsive">
-      <a href="Login.php" class="btn btn-danger">Book Now</a><br><br>
-      </div>
-	</div>
+          <?php 
+            $rooms = $display->select_all("rooms");
+            for($l = 0; $l < count($rooms); $l++) : 
+              if($rooms[$l]["room_id"] == $_GET["room_id"]) : ?>
+                <h2 class="Ac_Room_Text"><?php echo $rooms[$l]['type']; ?></h2>
+                <h3 class="Ac_Room_Text"><?php echo $rooms[$l]['price']; ?></h3>
+                <p class="text-justify"><?= $rooms[$l]['details']; ?></p>
+              <?php endif; ?>
+          <?php endfor; ?>
+
+          <div class="row">
+            <h2>Amenities & Facilities</h2>
+            <img src="image/icon/wifi.png"class="img-responsive">
+            <a href="Login.php" class="btn btn-danger">Book Now</a><br><br>
+          </div>
+	      </div>
+
 				<div class="col-sm-3">
 					<div class="panel panel-primary">
-					<div class="panel-heading">
-						<h4 align="center">Room Type</h4>
-					</div><br>
-					<div class="panel-body-right text-center">
-    <!--Fetch Mysql Database Select Query Room Details -->
-						<?php
-            for($k = 0; $k < count($rooms); $k++){
-            ?>
-            <a href="room_details.php?room_id=<?php echo $rooms[$k]['room_id']; ?>"><?php echo $rooms[$k]['type']; ?></a><hr>
-            <?php } ?>
-    <!--Fetch Mysql Database Select Query Room Details -->
+					  <div class="panel-heading">
+						  <h4 align="center">Room Type</h4>
+					  </div><br>
+					  <div class="panel-body-right text-center">
+              <!--Fetch Mysql Database Select Query Room Details -->
+              <?php for($k = 0; $k < count($rooms); $k++) : ?>
+                <a href="room_details.php?room_id=<?= $rooms[$k]['room_id']; ?>"><?= $rooms[$k]['type']; ?></a><hr>
+              <?php endfor; ?>
+              <!--Fetch Mysql Database Select Query Room Details -->
     					
-					</div>
-				</div>
+					  </div>
+				  </div>
 				</div>
 			</div>
 		</div>
