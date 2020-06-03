@@ -4,11 +4,11 @@ $sql = $display->select_all("slider where id='$id'");
 $path="../image/Slider/" . $sql[0]['image'];
 
 if(isset($update)){
-	$imgNew = $_FILES['img']['name'];
-	if($imgNew == ""){
+	$img_new = $_FILES['img']['name'];
+	if($img_new == ""){
 		$arr = array("caption" => $cap);	
 	} else{
-		$arr = array("caption" => $cap, "image" => $imgNew);	
+		$arr = array("caption" => $cap, "image" => $img_new);	
 		//delete old image
 		unlink($path);
 		move_uploaded_file($_FILES['img']['tmp_name'],"../image/Slider/".$_FILES['img']['name']);
