@@ -1,9 +1,6 @@
 <?php $res = $display->select_all("admin WHERE username = " . "'" . $_SESSION['admin_logged_in'] . "'"); ?>
 
-<!DOCTYPE html>
-<html>
 <head>
-	<title>Hotel.Com</title>
 	<link href="https://fonts.googleapis.com/css?family=Baloo+Bhai" rel="stylesheet">
 </head>
 
