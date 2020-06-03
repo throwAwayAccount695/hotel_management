@@ -19,18 +19,13 @@
 	<?php 
 		$sql = $display->select_all("slider");
 		for($i = 0; $i < count($sql); $i++) :
-			//FIX FOR LOO, MAKE SURE IT WORKS WITH OTHER FILES!
-			$id = $sql[$i]['id'];
-			$caption = $sql[$i]['caption'];
-			$img = $sql[$i]['image'];
-			$path = "../image/Slider/$img";
-		?>
+	?>
 		<tr>
 			<td><?= $i + 1; ?></td>
-			<td><img src="<?= $path;?>" width="50" height="50"/></td>
-			<td><?= $caption; ?></td>
-			<td><a href="dashboard.php?option=update_slider&id=<?= $id; ?>"><span class="glyphicon glyphicon-pencil"></span></a></td>
-			<td><a href="#" onclick="delSlider('<?= $id; ?>')"><span class="glyphicon glyphicon-remove" style='color:red'></span></a></td>
+			<td><img src="<?= "../image/Slider/" . $sql[$i]['image'];?>" width="50" height="50"/></td>
+			<td><?= $sql[$i]['caption']; ?></td>
+			<td><a href="dashboard.php?option=update_slider&id=<?= $sql[$i]['id']; ?>"><span class="glyphicon glyphicon-pencil"></span></a></td>
+			<td><a href="#" onclick="delSlider('<?= $sql[$i]['id']; ?>')"><span class="glyphicon glyphicon-remove" style='color:red'></span></a></td>
 		</tr>	
 	<?php endfor; ?>	
 </table>
