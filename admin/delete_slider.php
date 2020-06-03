@@ -1,15 +1,11 @@
 <?php 
-include('../connection.php');
+require_once($_SERVER['DOCUMENT_ROOT'] . '/hotel_management/classes/Display.php');
 
-$id=$_GET['id'];
-$sql=mysqli_query($con,"select * from slider where id='$id' ");
-$res=mysqli_fetch_assoc($sql);
-$img=$res['image'];
-unlink("../image/Slider/$img");
+$id = $_GET['id'];
+$res = $display->select_all("slider where id='$id'");
+unlink("../image/Slider/" . $res[0]['image']);
 
-if(mysqli_query($con,"delete from slider where id='$id' "))
-{
-header('location:dashboard.php?option=slider');	
+if($display->delete_row("slider", array("id" => $id))){
+	header('location:dashboard.php?option=slider');	
 }
-
 ?>

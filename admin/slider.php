@@ -1,7 +1,7 @@
 <script>
 	function delSlider(id){
 		if(confirm("You want to delete this Slider ?")){
-			window.location.href='delete_slider.php?id='+id;	
+			window.location.href='delete_slider.php?id=' + id;	
 		}
 	}
 </script>
