@@ -15,30 +15,22 @@
 		<th>Cancel Order</th>
 	</tr>
 
-<?php 
-$i=1;
-$sql=mysqli_query($con,"select * from room_booking_details");
-while($res=mysqli_fetch_assoc($sql))
-{
-$oid=$res['id'];
-
-?>
-<tr>
-		<td><?php echo $i;$i++; ?></td>
-		<td><?php echo $res['name']; ?></td>
-		<td><?php echo $res['email']; ?></td>
-		<td><?php echo $res['phone']; ?></td>
-		<td><?php echo $res['address']; ?></td>
-		<td><?php echo $res['room_type']; ?></td>
-		<td><?php echo $res['check_in_date']; ?></td>
-		<td><?php echo $res['check_in_time']; ?></td>
-		<td><?php echo $res['check_out_date']; ?></td>
-		<td><?php echo $res['Occupancy']; ?></td>
-		<td><a style="color:red" href="cancel_order.php?booking_id=<?php echo $oid; ?>">Cancel</a></td>
-	</td>
+	<?php 
+		$res = $display->select_all("room_booking_details");
+		for($i = 0; $i < count($res); $i++) :
+	?>
+	<tr>
+		<td><?= $i + 1; ?></td>
+		<td><?= $res[$i]['name']; ?></td>
+		<td><?= $res[$i]['email']; ?></td>
+		<td><?= $res[$i]['phone']; ?></td>
+		<td><?= $res[$i]['address']; ?></td>
+		<td><?= $res[$i]['room_type']; ?></td>
+		<td><?= $res[$i]['check_in_date']; ?></td>
+		<td><?= $res[$i]['check_in_time']; ?></td>
+		<td><?= $res[$i]['check_out_date']; ?></td>
+		<td><?= $res[$i]['Occupancy']; ?></td>
+		<td><a style="color:red" href="cancel_order.php?booking_id=<?= $res[$i]['id']; ?>">Cancel</a></td>
 	</tr>
-<?php 	
-}
-
-?>	
+	<?php endfor; ?>	
 </table>
