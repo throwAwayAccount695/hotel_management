@@ -12,23 +12,19 @@
 		<th>Pictrure</th>
 	</tr>
 	<?php 
-$i=1;
-$sql=mysqli_query($con,"select * from create_account");
-while($res=mysqli_fetch_assoc($sql))
-{
-?>
-<tr>
-		<td><?php echo $i;$i++; ?></td>
-		<td><?php echo $res['name']; ?></td>
-		<td><?php echo $res['email']; ?></td>
-		<td><?php echo $res['password']; ?></td>
-		<td><?php echo $res['mobile']; ?></td>
-		<td><?php echo $res['address']; ?></td>
-		<td><?php echo $res['gender']; ?></td>
-		<td><?php echo $res['country']; ?></td>
-		<td><?php echo $res['pictrure']; ?></td>
-	</td>
+		$res = $display->select_all("create_account");
+		for($i = 0; $i < count($res); $i++) :
+	?>
+	<tr>
+		<td><?= $i + 1; ?></td>
+		<td><?= $res[$i]['name']; ?></td>
+		<td><?= $res[$i]['email']; ?></td>
+		<td><?= $res[$i]['password']; ?></td>
+		<td><?= $res[$i]['mobile']; ?></td>
+		<td><?= $res[$i]['address']; ?></td>
+		<td><?= $res[$i]['gender']; ?></td>
+		<td><?= $res[$i]['country']; ?></td>
+		<td><?= $res[$i]['pictrure']; ?></td>
 	</tr>	
-<?php 	
-}
-?>	
+	<?php endfor; ?>	
+</table>
