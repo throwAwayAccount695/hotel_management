@@ -1,6 +1,5 @@
 <?php 
 session_start();
-include('../connection.php');
 require_once($_SERVER['DOCUMENT_ROOT'] . '/hotel_management/classes/Display.php');
 extract($_REQUEST);
 

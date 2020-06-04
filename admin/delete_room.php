@@ -1,18 +1,11 @@
 <?php 
-include('../connection.php');
+require_once($_SERVER['DOCUMENT_ROOT'] . '/hotel_management/classes/Display.php');
 
-$id=$_GET['id'];
+$id = $_GET['id'];
+$res = $display->select_all("rooms WHERE room_id='$id'");
 
-$sql=mysqli_query($con,"select * from rooms where room_id='$id' ");
-$res=mysqli_fetch_assoc($sql);
+unlink("../image/rooms/" . $res[0]['image']);
 
-$img=$res['image'];
-
-unlink("../image/rooms/$img");
-
-if(mysqli_query($con,"delete from rooms where room_id='$id' "))
-{
+$display->delete_row("rooms", array("room_id" => $id));
 header('location:dashboard.php?option=rooms');	
-}
-
 ?>
