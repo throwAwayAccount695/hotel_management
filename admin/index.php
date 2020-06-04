@@ -8,7 +8,8 @@ if(isset($login)){
 	if($eid=="" || $pass==""){
 	  $error= "<h3 style='color:red'>Fill all details</h3>";	
 	} else{
-	  $sql = $display->select_all("admin WHERE username='$eid' AND password='$pass'", TRUE);
+    $tmp = md5($pass . $display->get_salt());
+	  $sql = $display->select_all("admin WHERE username='$eid' AND password='$tmp'", TRUE);
 		if(mysqli_num_rows($sql)){
       $_SESSION['admin_logged_in'] = $eid;
 		  header('location:dashboard.php');	
