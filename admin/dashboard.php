@@ -77,7 +77,7 @@ if($admin == ""){
           } else {
             $opt = '';
           }
-          
+
           switch ($opt) {
             case 'feedback':
               include('feedback.php');	
@@ -135,6 +135,7 @@ if($admin == ""){
       </div>
     </div>
   </div>
+  <?php include('Footer.php'); ?>
 
   <!-- Bootstrap core JavaScript
   ================================================== -->
