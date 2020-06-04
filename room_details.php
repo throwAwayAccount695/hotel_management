@@ -12,6 +12,7 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
   <link href="https://fonts.googleapis.com/css?family=Abril+Fatface" rel="stylesheet">
 </head>
+
 <body style="margin-top:50px;">
 	<?php include('menu_bar.php'); ?>
   <br><br><br>
@@ -80,7 +81,6 @@
                 <a href="room_details.php?room_id=<?= $rooms[$k]['room_id']; ?>"><?= $rooms[$k]['type']; ?></a><hr>
               <?php endfor; ?>
               <!--Fetch Mysql Database Select Query Room Details -->
-    					
 					  </div>
 				  </div>
 				</div>

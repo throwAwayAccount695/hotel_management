@@ -24,35 +24,21 @@ require_once('classes/Display.php');
       <?php
         $slider = $display->select_all("slider");
         $path="image/Slider/"; 
-        for($k = 0; $k < count($slider); $k++) :
-          if($k == 0) : ?>
-            <li data-target="#myCarousel" data-slide-to="<?= $k; ?>" class="active"></li>
-          <?php else: ?>	
-            <li data-target="#myCarousel" data-slide-to="<?= $k; ?>"></li>
-          <?php endif; ?>
+        for($k = 0; $k < count($slider); $k++) : ?>
+          <li data-target="#myCarousel" data-slide-to="<?= $k; ?>" <?= ($k == 0) ? 'class="active"' : ''; ?>></li>
         <?php endfor; ?>
     </ol>
     <!--Indicators Close Here-->
 
     <!-- Wrapper for slides -->
     <div class="carousel-inner" role="listbox">
-    <?php
-      for($i = 0; $i < count($slider); $i++) : 
-        if($i == 0) : ?>
-          <div class="item active">
-            <img style="max-height: 500px;" src="<?= $path . $slider[$i]['image']; ?>" alt="Image">
-            <div class="carousel-caption">
-              <h2><?= $slider[$i]['caption']; ?></h2>
-            </div>      
-          </div>
-        <?php else: ?>	
-          <div class="item">
-            <img style="max-height: 500px;" src="<?= $path . $slider[$i]['image']; ?>" alt="Image">
-            <div class="carousel-caption">
-              <h2><?= $slider[$i]['caption'] ?></h2>
-            </div>      
-          </div>	
-        <?php endif; ?>
+      <?php for($i = 0; $i < count($slider); $i++) : ?>
+        <div class="<?= ($i == 0) ? 'item active' : 'item'; ?>">
+          <img style="max-height: 480px;" src="<?= $path . $slider[$i]['image']; ?>" alt="Image">
+          <div class="carousel-caption">
+            <h2><?= $slider[$i]['caption']; ?></h2>
+          </div>      
+        </div>
       <?php	endfor; ?>	  
     </div>
 
@@ -69,13 +55,11 @@ require_once('classes/Display.php');
     
 </div> <!--Room Info Start Here-->
 
- <div class="container-fluid"id="red"><!--Id Is Red--> 
-<div class="container text-center">    
+<div class="container-fluid"id="red">
+  <div class="container text-center">    
   <h1>Welcome To <font color="#a6e22b;"><b>Online Hotel.Com</b></font></h1><hr><br>
   <div class="row">
-    <div class="hov"><!--Hov is Class-->
-    
-	
+    <div class="hov">
         <?php 
           $rooms = $display->select_all("rooms");
           for($j = 0; $j < count($rooms); $j++) : ?>

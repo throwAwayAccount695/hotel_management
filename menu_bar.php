@@ -18,6 +18,7 @@ error_reporting(1);
 		<div class="collapse navbar-collapse" id="myNavbar">
 			<ul class="nav navbar-nav">
 				<li><a href="index.php"title="Home">Home</a></li>
+				<li><a href="room_details.php?room_id=34"title="Gallery">Room Details </a></li>
 				<li><a href="about.php"title="About">About </a></li>
 				<li><a href="image_gallery.php"title="Gallery">Gallery </a></li>
 			</ul>
