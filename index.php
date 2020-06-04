@@ -5,7 +5,7 @@ require_once('classes/Display.php');
 ?>
 <!DOCTYPE html>
 <html lang="en">
-<head><!--Head Open  Here-->
+<head>
   <title>Online Hotel.Com</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -14,38 +14,42 @@ require_once('classes/Display.php');
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
   <link href="https://fonts.googleapis.com/css?family=Abril+Fatface" rel="stylesheet">
   <link href="css/style.css"rel="stylesheet"/>
-</head> <!--Head Open  Here-->
+</head>
+
 <body style="margin-top:50px;">
-  <?php
-      include('menu_bar.php');
-  ?>
+  <?php include('menu_bar.php'); ?>
 <div id="myCarousel" class="carousel slide" data-ride="carousel"> <!--Slider Image Start Here--> 
     <!-- Indicators -->
     <ol class="carousel-indicators">
-      <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
-      <li data-target="#myCarousel" data-slide-to="1"></li>
-	   <li data-target="#myCarousel" data-slide-to="2"></li>
+      <?php
+        $slider = $display->select_all("slider");
+        $path="image/Slider/"; 
+        for($k = 0; $k < count($slider); $k++) :
+          if($k == 0) : ?>
+            <li data-target="#myCarousel" data-slide-to="<?= $k; ?>" class="active"></li>
+          <?php else: ?>	
+            <li data-target="#myCarousel" data-slide-to="<?= $k; ?>"></li>
+          <?php endif; ?>
+        <?php endfor; ?>
     </ol>
     <!--Indicators Close Here-->
 
     <!-- Wrapper for slides -->
     <div class="carousel-inner" role="listbox">
     <?php
-      $slider = $display->select_all("slider");
-      $path="image/Slider/";
       for($i = 0; $i < count($slider); $i++) : 
         if($i == 0) : ?>
           <div class="item active">
-            <img src="<?php echo $path . $slider[$i]['image']; ?>" alt="Image">
+            <img style="max-height: 500px;" src="<?= $path . $slider[$i]['image']; ?>" alt="Image">
             <div class="carousel-caption">
-              <h2><?php echo $slider[$i]['caption']; ?></h2>
+              <h2><?= $slider[$i]['caption']; ?></h2>
             </div>      
           </div>
         <?php else: ?>	
           <div class="item">
-            <img src="<?php echo $path . $slider[$i]['image']; ?>" alt="Image">
+            <img style="max-height: 500px;" src="<?= $path . $slider[$i]['image']; ?>" alt="Image">
             <div class="carousel-caption">
-              <h2><?php echo $slider[$i]['caption'] ?></h2>
+              <h2><?= $slider[$i]['caption'] ?></h2>
             </div>      
           </div>	
         <?php endif; ?>
@@ -72,19 +76,19 @@ require_once('classes/Display.php');
     <div class="hov"><!--Hov is Class-->
     
 	
-<?php 
-  $rooms = $display->select_all("rooms");
-  for($j = 0; $j < count($rooms); $j++) : ?>
-    <div class="col-sm-4">
-      <img src="image/rooms/<?php echo $rooms[$j]['image']; ?>"class="img-responsive thumbnail"alt="Image"id="img1"> <!--Id Is Img1-->
-      <h4 class="Room_Text">[ <?php echo $rooms[$j]['type']; ?>]</h4>
-      <p class="text-justify"><?php echo substr($rooms[$j]['details'],0,100); ?></p><br>
-      <a href="room_details.php?room_id=<?php echo $rooms[$j]['room_id']; ?>" class="btn btn-danger text-center">Read more</a><br><br>
+        <?php 
+          $rooms = $display->select_all("rooms");
+          for($j = 0; $j < count($rooms); $j++) : ?>
+            <div class="col-sm-4">
+              <img src="image/rooms/<?= $rooms[$j]['image']; ?>"class="img-responsive thumbnail"alt="Image"id="img1"> <!--Id Is Img1-->
+              <h4 class="Room_Text">[ <?= $rooms[$j]['type']; ?>]</h4>
+              <p class="text-justify"><?= substr($rooms[$j]['details'],0,100); ?></p><br>
+              <a href="room_details.php?room_id=<?= $rooms[$j]['room_id']; ?>" class="btn btn-danger text-center">Read more</a><br><br>
+            </div>
+        <?php endfor; ?>
+      </div>
     </div>
-  <?php endfor; ?>
   </div>
-  </div>
-</div>
 </div>
 
 <?php include('Footer.php'); ?>
