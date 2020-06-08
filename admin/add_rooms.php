@@ -4,7 +4,11 @@ if(isset($add)){
 	if(mysqli_num_rows($sql)){
 		echo "<h3 style='color:red'>this room is already added!</h3>";	
 	} else{	
-		$img = $_FILES['img']['name'];
+		$temp = explode('.', $_FILES['img']['name']);
+		$temp = end($temp);
+		$temp = str_replace(' ', '_', $type) . '.' . $temp;
+		$temp = strtolower($temp);
+		$img = $temp;
 		$display->insert_into("rooms", array("room_no", "type", "price", "details", "image"), array($room_no, $type, $price, $details, $img));
 		move_uploaded_file($_FILES['img']['tmp_name'], "../image/rooms/" . $img);
 		echo "<h3 style='color:blue'>Rooms added successfully!</h3>";
