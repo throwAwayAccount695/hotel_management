@@ -42,7 +42,7 @@ if(isset($savedata)){
   <h1>[ BOOKING Form ]</h1><br>
   <div class="container">
     <div class="row">
-      <?php echo @$msg; ?>
+      <?= @$msg; ?>
       <!--Form Containe Start Here-->
      <form class="form-horizontal" method="post">
        <div class="col-sm-6">
@@ -50,7 +50,7 @@ if(isset($savedata)){
             <div class="row">
               <div class="control-label col-sm-4"><h4> Name :</h4></div>
               <div class="col-sm-8">
-                <input type="text" value="<?php echo $result['name']; ?>" readonly="readonly" class="form-control" name="name" placeholder="Enter Your Frist Name"required>
+                <input type="text" value="<?= $result['name']; ?>" readonly="readonly" class="form-control" name="name" placeholder="Enter Your Frist Name"required>
               </div>
             </div>
           </div>
@@ -59,7 +59,7 @@ if(isset($savedata)){
           <div class="row">
             <div class="control-label col-sm-4"><h4>Email :</h4></div>
             <div class="col-sm-8">
-              <input type="email" value="<?php echo $result['email']; ?>" readonly="readonly" class="form-control" name="email"  placeholder="Enter Your Email-Id"required/>
+              <input type="email" value="<?= $result['email']; ?>" readonly="readonly" class="form-control" name="email"  placeholder="Enter Your Email-Id"required/>
             </div>
           </div>
         </div>
@@ -68,7 +68,7 @@ if(isset($savedata)){
           <div class="row">
             <div class="control-label col-sm-4"><h4>Mobile :</h4></div>
             <div class="col-sm-8">
-              <input type="number" value="<?php echo $result['mobile']; ?>" readonly="readonly" class="form-control" name="phone" placeholder="Type Your Phone Number"required>
+              <input type="number" value="<?= $result['mobile']; ?>" readonly="readonly" class="form-control" name="phone" placeholder="Type Your Phone Number"required>
             </div>
           </div>
         </div>
@@ -77,7 +77,7 @@ if(isset($savedata)){
           <div class="row">
             <div class="control-label col-sm-4"><h4>Address :</h4></div>
             <div class="col-sm-8">
-              <textarea name="address" class="form-control" readonly="readonly" placeholder="Enter Your Address"><?php echo $result['address'];  ?></textarea>
+              <textarea name="address" class="form-control" readonly="readonly" placeholder="Enter Your Address"><?= $result['address'];  ?></textarea>
             </div>
           </div>
         </div>
@@ -86,7 +86,7 @@ if(isset($savedata)){
           <div class="row">
             <div class="control-label col-sm-4"><h4>Country</h4></div>
             <div class="col-sm-8">
-              <input type="text" class="form-control" readonly="readonly"  value="<?php echo $result['country']; ?>" name="city" placeholder="Enter Your City Name"required>
+              <input type="text" class="form-control" readonly="readonly"  value="<?= $result['country']; ?>" name="city" placeholder="Enter Your City Name"required>
             </div>
           </div>
         </div>
@@ -116,11 +116,12 @@ if(isset($savedata)){
             <div class="control-label col-sm-5"><h4>Room Type:</h4></div>
             <div class="col-sm-7">
               <select class="form-control" name="room_type"required>
-                <option>Deluxe Room</option>
-                <option>Luxurious Suite</option>
-                <option>Standard Room</option>
-                <option>Suite Room</option>
-                <option>Twin Deluxe Room</option>
+                <?php $res = $display->select_all("rooms"); ?>
+                <?php for($i = 0; $i < count($res); $i++){
+                  if($res[$i]['type'] != "Parking Area"){
+                    echo "<option>" . $res[$i]['type'] . "</option>";
+                  }
+                } ?>
               </select>
             </div>
           </div>
