@@ -59,7 +59,7 @@
         }
 
         public function get_files($folder, $search_for_type = '*'){
-            $directory = "image/$folder/";
+            $directory = "$folder/";
             $files = glob($directory . "*.$search_for_type");
 
             if ($files !== FALSE){
@@ -70,7 +70,7 @@
         }
 
         public function count_files($folder, $search_for_type = '*'){
-            $directory = "image/$folder/";
+            $directory = "$folder/";
             $files = glob($directory . "*.$search_for_type");
 
             if ($files !== FALSE){

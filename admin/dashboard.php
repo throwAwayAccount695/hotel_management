@@ -114,6 +114,10 @@ if($admin == ""){
               include('update_room.php');
               break;
 
+            case 'room_carousel':
+              include('room_carousel.php');
+              break;
+
             case 'booking_details':
               include('booking_details.php');
               break;

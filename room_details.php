@@ -25,7 +25,7 @@
             <!-- Indicators -->
             <?php 
               $room_type = $display->get_room_type($_GET['room_id']); 
-              $image_count = $display->count_files($room_type);
+              $image_count = $display->count_files("image/$room_type");
             ?>
             <ol class="carousel-indicators">
               <?php for($i = 0; $i < $image_count; $i++) : ?>
@@ -37,7 +37,7 @@
             <div class="carousel-inner">
               <?php for($j = 0; $j < $image_count; $j++) : ?>
                 <div class="<?= ($j == 0) ? 'item active' : 'item'; ?>">
-                  <img src="<?= $display->get_files($room_type)[$j]; ?>"class="thumbnail" alt="img<?= $j + 1; ?>">
+                  <img src="<?= $display->get_files("image/" . $room_type)[$j]; ?>"class="thumbnail" alt="img<?= $j + 1; ?>">
                 </div>
               <?php endfor; ?>
             </div>
@@ -57,8 +57,8 @@
             $rooms = $display->select_all("rooms");
             for($l = 0; $l < count($rooms); $l++) : 
               if($rooms[$l]["room_id"] == $_GET["room_id"]) : ?>
-                <h2 class="Ac_Room_Text"><?php echo $rooms[$l]['type']; ?></h2>
-                <h3 class="Ac_Room_Text"><?php echo $rooms[$l]['price']; ?></h3>
+                <h2 class="Ac_Room_Text"><?= $rooms[$l]['type']; ?></h2>
+                <h3 class="Ac_Room_Text"><?= $rooms[$l]['price']; ?></h3>
                 <p class="text-justify"><?= $rooms[$l]['details']; ?></p>
               <?php endif; ?>
           <?php endfor; ?>

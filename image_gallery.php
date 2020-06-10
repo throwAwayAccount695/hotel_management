@@ -17,8 +17,8 @@
     <h2>Image Gallery</h2>
     <div class="row">
       <?php
-        $images = $display->get_files("image_gallery");
-        for($i = 0; $i < $display->count_files("image_gallery"); $i++) : 
+        $images = $display->get_files("image/image_gallery");
+        for($i = 0; $i < $display->count_files("image/image_gallery"); $i++) : 
       ?>
         <div class="col-md-4">
           <div class="thumbnail">
