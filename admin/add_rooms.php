@@ -20,7 +20,7 @@ if(isset($add)){
 <table class="table table-bordered">
 	<tr>	
 		<th>Room No</th>
-		<td><input type="text" name="room_no"  class="form-control"/></td>
+		<td><input type="number" name="room_no"  class="form-control"/></td>
 	</tr>
 	
 	<tr>	
@@ -30,7 +30,7 @@ if(isset($add)){
 	
 	<tr>	
 		<th>Price</th>
-		<td><input type="text" name="price"  class="form-control"/></td>
+		<td><input type="number" name="price"  class="form-control"/></td>
 	</tr>
 	
 	<tr>	

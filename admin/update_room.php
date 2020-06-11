@@ -17,6 +17,23 @@ if(isset($update)){
 		}
 	}
 	if(!$duplicate){
+		if($type != $res['type']){
+			$old_str = str_replace(' ', '_', $res['type']);
+			$old_str = strtolower($old_str);
+			$path = '../image/' .  $old_str;
+
+			$new_str = str_replace(' ', '_', $type);
+			$new_str = strtolower($new_str);
+			$new_path = '../image/' .  $new_str;
+			rename($path, $new_path); 
+
+			$files = glob($new_path . '/*.*');
+			foreach ($files as $file) {
+				$file_str = explode('/', $file);
+				$file_str = end($file_str);
+				rename($file, $new_path . '/' . str_replace($old_str, $new_str, $file_str));
+			}
+		}
 		if($_FILES['img']['size'] != 0){
 			$temp = explode('.', $_FILES['img']['name']);
 			$temp = end($temp);
@@ -42,17 +59,17 @@ if(isset($update)){
 	<table class="table table-bordered">	
 		<tr>	
 			<th>Room No</th>
-			<td><input type="number"  name="room_no" value="<?= $res['room_no']; ?>"  class="form-control"/></td>
+			<td><input type="number"  name="room_no" value="<?= $res['room_no']; ?>"  required class="form-control"/></td>
 		</tr>
 		
 		<tr>	
 			<th>Room Type</th>
-			<td><input type="text" name="type" value="<?= $res['type']; ?>"  class="form-control"/></td>
+			<td><input type="text" name="type" value="<?= $res['type']; ?>" required class="form-control"/></td>
 		</tr>
 		
 		<tr>	
 			<th>Price</th>
-			<td><input type="number" name="price"  value="<?= $res['price']; ?>" class="form-control"/></td>
+			<td><input type="number" name="price"  value="<?= $res['price']; ?>" required class="form-control"/></td>
 		</tr>
 		
 		<tr>	

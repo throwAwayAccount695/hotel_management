@@ -7,14 +7,20 @@ extract($_REQUEST);
 
 if(isset($delete)){
     unlink($delete);
+    $files_2 = $display->get_files("../image/$type");
+    for($i = 0; $i < count($files_2); $i++){
+        $file_str = explode('_', $files_2[$i]);
+        $file_end = end($file_str);
+        $num = preg_replace('/[^0-9]/', "", $file_end);
+        $file_end = str_replace($num , $i, $file_end);
+        array_pop($file_str);
+        rename($files_2[$i],  implode('_', $file_str) . '_' . $file_end);
+    }
     header('location:dashboard.php?option=room_carousel&id=' . $id . "&msg=<h3 style='color:orange'>Image Delete!</h3>");	
 }
 if(isset($msg)){
 	echo $msg;
 }
-
-// FIX UP ROOM_DETAILS.PHP TO DISPLAY CAROUSEL
-//ADD DELETE FUNCTION
 
 if(isset($update)){
     foreach ($_FILES as $key => $value) {
@@ -33,15 +39,6 @@ if(isset($update)){
    header('location:dashboard.php?option=room_carousel&id=' . $id . "&msg=<h3 style='color:blue'>Images Added/Updated!</h3>");	
 }
 ?>
-<script>
-	function del(img_id){
-        alert("poop");
-		if(confirm("You want to delete this Image?")){
-			window.location.href=';	
-		}
-	}
-</script>
-
 <form method="post" enctype="multipart/form-data">
 	<table class="table table-bordered">	
         <?php if(is_dir("../image/$type")) : ?>
