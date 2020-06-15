@@ -117,11 +117,13 @@ if(isset($savedata)){
             <div class="col-sm-7">
               <select class="form-control" name="room_type"required>
                 <?php $res = $display->select_all("rooms"); ?>
-                <?php for($i = 0; $i < count($res); $i++){
-                  if($res[$i]['type'] != "Parking Area"){
-                    echo "<option>" . $res[$i]['type'] . "</option>";
-                  }
-                } ?>
+                <?php 
+                  for($i = 0; $i < count($res); $i++){
+                    if($res[$i]['type'] != "Parking Area"){
+                      echo "<option>" . $res[$i]['type'] . "</option>";
+                    }
+                  } 
+                ?>
               </select>
             </div>
           </div>

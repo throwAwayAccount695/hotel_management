@@ -1,5 +1,4 @@
 <?php
-include('connection.php');
 require_once('classes/Display.php');
 extract($_REQUEST);
 if(isset($save))

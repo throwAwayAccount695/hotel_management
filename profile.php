@@ -5,7 +5,6 @@ $eid = $_SESSION['create_account_logged_in'];
 if(empty($eid)){
   header('location:login.php'); 
 }
-include('connection.php');
 require_once('classes/Display.php');
 extract($_REQUEST);
 
