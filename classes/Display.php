@@ -95,8 +95,7 @@
          * @return string Return a string with the room type.
          */
         public function get_room_type($id){
-            $sql = $this->model->get_content('rooms');
-            $sql = $sql . $this->model->get_where(array('room_id' => $id));
+            $sql = $this->model->get_content("rooms WHERE room_id = '$id'");
             $data = $this->model->sql_query($sql);
             $string = $data[0]['type'];
             $string = str_replace(' ', '_', $string);
