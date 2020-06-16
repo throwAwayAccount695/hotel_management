@@ -1,6 +1,7 @@
 <?php 
 include('menu_bar.php');
 require_once('classes/Display.php');
+//Check If User Is LoggedIN
 if($eid == ""){ header('location:Login.php'); }
 
 $res = $display->select_all("create_account WHERE email='$eid' ");
@@ -38,12 +39,12 @@ if(isset($savedata)){
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
 <body style="margin-top:50px;">
-<div class="container-fluid text-center"id="primary"><!--Primary Id-->
+<div class="container-fluid text-center"id="primary">
   <h1>[ BOOKING Form ]</h1><br>
   <div class="container">
     <div class="row">
+      <!-- -Outputs Error Message -->
       <?= @$msg; ?>
-      <!--Form Containe Start Here-->
      <form class="form-horizontal" method="post">
        <div class="col-sm-6">
          <div class="form-group">
@@ -77,7 +78,7 @@ if(isset($savedata)){
           <div class="row">
             <div class="control-label col-sm-4"><h4>Address :</h4></div>
             <div class="col-sm-8">
-              <textarea name="address" class="form-control" readonly="readonly" placeholder="Enter Your Address"><?= $result['address'];  ?></textarea>
+              <input type="text" name="address" class="form-control" readonly="readonly" placeholder="Enter Your Address" value="<?= $result['address'];  ?>">
             </div>
           </div>
         </div>
@@ -91,6 +92,8 @@ if(isset($savedata)){
           </div>
         </div>
 
+
+        <!-- Not Used -->
         <div class="form-group">
           <div class="row">
             <div class="control-label col-sm-4"><h4></h4></div>
@@ -100,6 +103,7 @@ if(isset($savedata)){
           </div>
         </div>
 
+        <!-- Not Used -->
 		    <div class="form-group">
           <div class="row">
             <div class="control-label col-sm-4"><h4></h4></div>
@@ -181,8 +185,6 @@ if(isset($savedata)){
   </div>
 </div>
 </div>
-<?php
-include('Footer.php')
-?>
+<?php include('Footer.php'); ?>
 </body>
 </html>

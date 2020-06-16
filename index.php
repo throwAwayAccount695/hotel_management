@@ -18,19 +18,18 @@ require_once('classes/Display.php');
 
 <body style="margin-top:50px;">
   <?php include('menu_bar.php'); ?>
-<div id="myCarousel" class="carousel slide" data-ride="carousel"> <!--Slider Image Start Here--> 
-    <!-- Indicators -->
+  <!--Slider Indicators --> 
+  <div id="myCarousel" class="carousel slide" data-ride="carousel"> 
     <ol class="carousel-indicators">
       <?php
-        $slider = $display->select_all("slider");
-        $path="image/Slider/"; 
-        for($k = 0; $k < count($slider); $k++) : ?>
-          <li data-target="#myCarousel" data-slide-to="<?= $k; ?>" <?= ($k == 0) ? 'class="active"' : ''; ?>></li>
-        <?php endfor; ?>
+      $slider = $display->select_all("slider");
+      $path="image/Slider/"; 
+      for($k = 0; $k < count($slider); $k++) : ?>
+        <li data-target="#myCarousel" data-slide-to="<?= $k; ?>" <?= ($k == 0) ? 'class="active"' : ''; ?>></li>
+      <?php endfor; ?>
     </ol>
-    <!--Indicators Close Here-->
 
-    <!-- Wrapper for slides -->
+    <!-- Slider Images -->
     <div class="carousel-inner" role="listbox">
       <?php for($i = 0; $i < count($slider); $i++) : ?>
         <div class="<?= ($i == 0) ? 'item active' : 'item'; ?>">
@@ -42,7 +41,7 @@ require_once('classes/Display.php');
       <?php	endfor; ?>	  
     </div>
 
-    
+    <!-- Left And Right Controls -->
     <a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev">
       <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
       <span class="sr-only">Previous</span>
@@ -51,31 +50,29 @@ require_once('classes/Display.php');
       <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
       <span class="sr-only">Next</span>
     </a> 
-    <!-- Left and right controls Close Here -->
-    
-</div> <!--Room Info Start Here-->
-
-<div class="container-fluid"id="red">
-  <div class="container text-center">    
-  <h1>Welcome To <font color="#a6e22b;"><b>Online Hotel.Com</b></font></h1><hr><br>
-  <div class="row">
-    <div class="hov">
-        <?php 
-          $rooms = $display->select_all("rooms");
-          for($j = 0; $j < count($rooms); $j++) : ?>
+  
+  </div> 
+  
+  <!-- Rooms Showcase -->
+  <div class="container-fluid"id="red">
+    <div class="container text-center">    
+    <h1>Welcome To <font color="#a6e22b;"><b>Online Hotel.Com</b></font></h1><hr><br>
+    <div class="row">
+      <div class="hov">
+        <?php $rooms = $display->select_all("rooms"); ?>
+          <?php for($j = 0; $j < count($rooms); $j++) : ?>
             <div class="col-sm-4">
               <img src="image/rooms/<?= $rooms[$j]['image']; ?>"class="img-responsive thumbnail"alt="Image"id="img1"> <!--Id Is Img1-->
               <h4 class="Room_Text">[ <?= $rooms[$j]['type']; ?>]</h4>
               <p class="text-justify"><?= substr($rooms[$j]['details'],0,100); ?></p><br>
               <a href="room_details.php?room_id=<?= $rooms[$j]['room_id']; ?>" class="btn btn-danger text-center">Read more</a><br><br>
             </div>
-        <?php endfor; ?>
+          <?php endfor; ?>
+        </div>
       </div>
     </div>
   </div>
-</div>
 
 <?php include('Footer.php'); ?>
-
 </body>
 </html>

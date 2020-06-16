@@ -5,9 +5,9 @@ extract($_REQUEST);
 if(isset($submit)){
   $sql = $display->select_all("create_account WHERE email = '$email'");
   if(!empty($sql)){
-    $error= "<h3 style='color:blue'>Your Passwrod is: ".$sql[0]['password']."</h3>"; 
+    $error = "<h3 style='color:blue'>Your Password Is: ".$sql[0]['password']."</h3>"; 
   } else{
-    $error= "<h3 style='color:red'>Invalid  details</h3>"; 
+    $error = "<h3 style='color:red'>Invalid Details</h3>"; 
   }  
 }
 ?>  
@@ -25,14 +25,16 @@ if(isset($submit)){
 </head>
 <body style="margin-top:50px;">
   <?php include('menu_bar.php'); ?>
-  <div class="container-fluid"id="primary"> <!-- Primary Id-->
+  <div class="container-fluid"id="primary">
     <div class="container">
       <div class="row">
         <div class="col-sm-3"></div>
         <div class="col-sm-6">
           <h1 style="margin-top:50px;padding-top:50px;">Forgot Account?</h1><hr>
-          <?php echo  @$error; ?>
+          <!-- Outputs error messages -->
+          <?= @$error; ?>
           <p class="text-center">Please Enter your Email to reset your Password.</p><br><br>
+          <!-- Form -->
           <form method="post">
             <div class="form-group">
               <input type="Email" name="email" class="form-control" id="#"placeholder="Enter Your Email"required>
@@ -43,6 +45,6 @@ if(isset($submit)){
       </div>
     </div>
   </div>
-  <?php include('Footer.php'); ?>
+<?php include('Footer.php'); ?>
 </body>
 </html>

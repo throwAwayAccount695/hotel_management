@@ -7,7 +7,7 @@ if(isset($send)){
   $msg_foot = "<h4 style='color:green;'>feedback sent successfully</h4>";
 }
 ?>
-<!-- Footer1 Start Here-->
+<!-- Main Footer -->
 <footer style="background-color: #393939;">
   <div class="container-fluid">
 	  <div class="col-sm-4 hov">
@@ -28,12 +28,13 @@ if(isset($send)){
      <center><img src="image/devlop/img2.png"class="img-responsive"style="width:200px;height:150px;border-radius:100%;"></center>
 	  </div>&nbsp;
 
-  <!--Feedback Start Here-->
+    <!-- Feedback Panel-->
 	  <div class="col-sm-4 text-center">
       <div class="panel panel-primary">
         <div class="panel-heading">Feedback</div>
         <div class="panel-body">
-          <?php echo @$msg_foot; ?>
+          <!-- Outputs error messages -->
+          <?= @$msg_foot; ?>
           <div class="feedback">
             <form method="post"><br>
               <div class="form-group">
@@ -46,7 +47,7 @@ if(isset($send)){
                 <input type="Number" name="phone_foot" class="form-control" id="#"placeholder="Enter Your Phone Number"required>
               </div>
               <div class="form-group">
-                <textarea name="message" class="form-control" id="#"placeholder="Type Your Message"required></textarea>
+                <textarea style="resize:vertical;" name="message" class="form-control" id="#"placeholder="Type Your Message"required></textarea>
               </div>
               <input type="submit" value="send" name="send" class="btn btn-primary btn-group-justified"required>
             </form>     
@@ -54,14 +55,14 @@ if(isset($send)){
         </div>
       </div>
     </div>
-    <!--Feedback Panel Close here-->
+    <!-- Feedback Panel End-->
   </div>
 </footer>
-<!--Footer1 Close Here-->
 
-<!--Footer2 start Here-->
+<!-- Second Footer -->
 <footer class="container-fluid text-center"style="background-color:#000408;height:40px;padding-top:10px;color:#f0f0f0;">
   <p>Develope By AmitVish@ | All Rights Reserved 2019</p>
 </footer>
 
+<!-- Closes The Database Connection -->
 <?php $display->close_conn(); ?>
