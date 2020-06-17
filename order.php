@@ -1,6 +1,7 @@
 <?php 
 session_start();
 error_reporting(1);
+//Check If User Is LoggedIn
 $eid = $_SESSION['create_account_logged_in'];
 if(empty($eid)){
   header('location:login.php'); 
@@ -22,11 +23,12 @@ require_once('classes/Display.php');
 </head>
 <body style="margin-top:50px;">
   <?php include('menu_bar.php'); ?>
-  <div class="container-fluid"><!--Primary Id-->
+  <div class="container-fluid">
     <h1 class="text-center text-primary">[ Booking Details ]</h1><br>
     <div class="container">
       <div class="row">
         <table class="table table-striped table-bordered table-hover table-responsive"style="height:150px;">
+          <!-- Table names -->
           <tr>
             <th>Name</th>
             <th>Email</th>
@@ -44,6 +46,7 @@ require_once('classes/Display.php');
             $sql = $display->select_all("room_booking_details where email='$eid'");
             for($i = 0; $i < count($sql); $i++){
               $oid=$sql[$i]['id'];
+              echo "<!-- Table Element $i -->";
               echo "<tr>";
               echo "<td>".$sql[$i]['name']."</td>";
               echo "<td>".$sql[$i]['email']."</td>";

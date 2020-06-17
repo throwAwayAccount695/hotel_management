@@ -21,8 +21,8 @@
 			<div class="row">
 				<div class="col-sm-2"></div>
 				<div class="col-sm-7">
+          <!--Slider Indicators --> 
 					<div id="myCarousel" class="carousel slide" data-ride="carousel">
-            <!-- Indicators -->
             <?php 
               $room_type = $display->get_room_type($_GET['room_id']); 
               $image_count = $display->count_files("image/$room_type");
@@ -33,7 +33,7 @@
               <?php endfor; ?>
             </ol>
 
-            <!-- Wrapper for slides -->
+            <!-- Slider Images -->
             <div class="carousel-inner">
               <?php for($j = 0; $j < $image_count; $j++) : ?>
                 <div class="<?= ($j == 0) ? 'item active' : 'item'; ?>">
@@ -42,7 +42,7 @@
               <?php endfor; ?>
             </div>
 
-            <!-- Left and right controls -->
+            <!-- Left And Right Controls -->
             <a class="left carousel-control" href="#myCarousel" data-slide="prev">
               <span class="glyphicon glyphicon-chevron-left"></span>
               <span class="sr-only">Previous</span>
@@ -53,16 +53,17 @@
             </a>
           </div>
 
-          <?php 
-            $rooms = $display->select_all("rooms");
-            for($l = 0; $l < count($rooms); $l++) : 
-              if($rooms[$l]["room_id"] == $_GET["room_id"]) : ?>
+          <!-- Room Price and Description-->
+          <?php $rooms = $display->select_all("rooms"); ?>
+            <?php for($l = 0; $l < count($rooms); $l++) : ?>
+              <?php if($rooms[$l]["room_id"] == $_GET["room_id"]) : ?>
                 <h2 class="Ac_Room_Text"><?= $rooms[$l]['type']; ?></h2>
                 <h3 class="Ac_Room_Text"><?= $rooms[$l]['price']; ?></h3>
                 <p class="text-justify"><?= $rooms[$l]['details']; ?></p>
               <?php endif; ?>
-          <?php endfor; ?>
+            <?php endfor; ?>
 
+          <!-- Booking Button And Image -->
           <div class="row">
             <h2>Amenities & Facilities</h2>
             <img src="image/icon/wifi.png"class="img-responsive">
@@ -75,12 +76,11 @@
 					  <div class="panel-heading">
 						  <h4 align="center">Room Type</h4>
 					  </div><br>
+            <!-- Sidebar links -->
 					  <div class="panel-body-right text-center">
-              <!--Fetch Mysql Database Select Query Room Details -->
               <?php for($k = 0; $k < count($rooms); $k++) : ?>
                 <a href="room_details.php?room_id=<?= $rooms[$k]['room_id']; ?>"><?= $rooms[$k]['type']; ?></a><hr>
               <?php endfor; ?>
-              <!--Fetch Mysql Database Select Query Room Details -->
 					  </div>
 				  </div>
 				</div>

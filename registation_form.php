@@ -1,12 +1,14 @@
 <?php
 require_once('classes/Display.php');
 extract($_REQUEST);
+
 if(isset($save))
 {
   $sql = $display->select_all("create_account WHERE email='$email'", TRUE);
   if(mysqli_num_rows($sql)){
     $msg= "<h1 style='color:red'> account already exists</h1>";    
   } else{
+    //hashes password with md5 and adds salt to the string.
     $pwd = md5($password . $display->get_salt());
     $result = $display->insert_into(
       "create_account", array('name', 
@@ -36,13 +38,15 @@ if(isset($save))
 </head>
 <body style="margin-top:50px;">
   <?php include('menu_bar.php'); ?>
-  <div class="container-fluid"style="background-color:#4286f4;color:#000;"> <!-- Primary Id-->
+  <div class="container-fluid"style="background-color:#4286f4;color:#000;">
     <div class="container">
       <div class="row">
         <center><h1 style="background-color:#ed2553; border-radius:50px;display:inline-block;"><b><font color="#080808">Create New Account?</font></b></h1></center>
-        <center><?php echo @$msg;?></center><br>
+      	<!-- Outputs Error Messages -->
+        <center><?= @$msg;?></center><br>
         <div class="col-sm-2"></div>
           <div class="col-sm-6 ">
+            <!-- Form -->
             <form class="form-horizontal"method="post">
               <div class="form-group">
                 <div class="control-label col-sm-5"><h4>Name :</h4></div>

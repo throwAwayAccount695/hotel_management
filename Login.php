@@ -1,6 +1,7 @@
 <?php 
 session_start();
 error_reporting(1);
+//Check If User Is Allready LoggedIN.
 if($_SESSION['create_account_logged_in']!=""){
 	header('location:booking_form.php');
 }
@@ -11,6 +12,7 @@ if(isset($login)){
 	if($eid=="" || $pass==""){
 		$error= "<h4 style='color:red'>fill all details</h4>";  
 	} else{
+		//hashes password with md5 and adds salt to the string.
 		$password = md5($pass . $display->get_salt());
 		$sql = $display->select_all("create_account WHERE email='$eid' && password='$password'", TRUE);
 		if(mysqli_num_rows($sql)){
@@ -37,14 +39,16 @@ if(isset($login)){
 </head>
 <body style="margin-top:50px;">
 	<?php include('menu_bar.php'); ?>
-	<div class="container-fluid"><!-- Primary Id-->
+	<div class="container-fluid">
 		<div class="container">
 			<div class="row"><br>
 				<div class="col-sm-4"></div>
 				<div class="col-sm-4 text-center"style="box-shadow:2px 2px 2px;background-color:#f4ac41;"><br>
 					<h1 align="center"><b><font style="font-family: 'Libre Baskerville', serif;text-shadow:3px 3px #000;">User Login ?</font></b></h1>
 					<img src="image/clipart/login-user-icon.png" class="img-circle" alt="Bird" width="130" height="120">
-					<?php echo @$error; ?>
+					<!-- Outputs Error Messages -->
+					<?= @$error; ?>
+					<!-- Login Form -->
 					<form method="post"><br>
 						<div class="form-group">
 							<input type="Email" class="form-control"name="eid"placeholder="Email Id" autocomplete="off"required >
@@ -62,6 +66,6 @@ if(isset($login)){
 				</div><br>
 			</div>
 	</div>
-	<?php include('footer.php'); ?>
+<?php include('footer.php'); ?>
 </body>
 </html>

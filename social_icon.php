@@ -50,7 +50,7 @@
 </head>
 
 <body>
-  <!-- Add font awesome icons -->
+  <!-- Links to Social media -->
   <a href="https://www.facebook.com/" class="fa fa-facebook" target="blank" title="facebook"></a>
   <a href="https://twitter.com/" class="fa fa-twitter" target="blank" title="twitter"></a>
   <a href="https://google-plus.com/" class="fa fa-google-plus" target="blank" title="google-plus"></a>

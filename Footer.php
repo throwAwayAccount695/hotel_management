@@ -64,5 +64,5 @@ if(isset($send)){
   <p>Develope By AmitVish@ | All Rights Reserved 2019</p>
 </footer>
 
-<!-- Closes The Database Connection -->
+<?php //Closses The Database Connection ?>
 <?php $display->close_conn(); ?>

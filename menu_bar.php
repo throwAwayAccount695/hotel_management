@@ -7,6 +7,7 @@ error_reporting(1);
 ?>
 <nav class="navbar navbar-inverse navbar-fixed-top">
 	<div class="container">
+		<!-- Header Logo -->
 		<div class="navbar-header">
 			<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
 				<span class="icon-bar"></span>
@@ -15,6 +16,7 @@ error_reporting(1);
 			</button>
 			<img src="logo/logo2.png"/width="160px"height="40px"style="margin-top:5px;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 		</div>
+		<!-- Page Links -->
 		<div class="collapse navbar-collapse" id="myNavbar">
 			<ul class="nav navbar-nav">
 				<li><a href="index.php"title="Home">Home</a></li>
@@ -22,6 +24,7 @@ error_reporting(1);
 				<li><a href="about.php"title="About">About </a></li>
 				<li><a href="image_gallery.php"title="Gallery">Gallery </a></li>
 			</ul>
+			<!-- Login Links -->
 			<ul class="nav navbar-nav navbar-right">
 				<?php if($_SESSION['create_account_logged_in']!="") : ?>
 				<li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">View Status <span class="caret"></span></a>
@@ -39,5 +42,4 @@ error_reporting(1);
 		</div>
 	</div>
 </nav>   
-
 <!--Menu Bar Close Here -->

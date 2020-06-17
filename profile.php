@@ -1,6 +1,7 @@
 <?php 
 session_start();
 error_reporting(1);
+//Check If User Is LoggedIn
 $eid = $_SESSION['create_account_logged_in'];
 if(empty($eid)){
   header('location:login.php'); 
@@ -12,6 +13,8 @@ if(isset($update))
 {
   $update_arr = array("name" => $name, "mobile" => $phone, "address" => $address);
   if($pass != '********'){ 
+    //hashes password with md5 and adds salt to the string.
+    //merges password into the update array.
     $update_arr = array_merge($update_arr, array("password"  => md5($pass . $display->get_salt())));
   }
   if($display->update("create_account", $update_arr, array("email" => $eid))){
@@ -38,18 +41,19 @@ if(isset($update))
 <body style="margin-top:50px;">
   <?php include('menu_bar.php'); ?>
   <?php $result = $display->select_all("create_account WHERE email='$eid'"); $result = $result[0] ?>
-  <div class="container-fluid"id="primary"><!--Primary Id-->
+  <div class="container-fluid"id="primary">
     <center><h1 style="background-color:#ed2553;border-radius:50px;font-family: 'Baloo Bhai', cursive;box-shadow:5px 5px 9px blue;text-shadow:2px 2px#000;display:inline-block;">User Profile</h1></center><br>
     <div class="container">
       <div class="row">
-        <center><?php  echo $msg; ?></center>
+        <!-- Outputs Error Messages -->
+        <center><?= $msg; ?></center>
         <form class="form-horizontal" method="post">
           <div class="col-sm-6">
             <div class="form-group">
               <div class="row">
                 <div class="control-label col-sm-4"><h4> Name :</h4></div>
                 <div class="col-sm-8">
-                  <input type="text" name="name" value="<?php echo $result['name']; ?>"class="form-control"/>
+                  <input type="text" name="name" value="<?= $result['name']; ?>"class="form-control"/>
                 </div>
               </div>
             </div>
@@ -58,7 +62,7 @@ if(isset($update))
               <div class="row">
                 <div class="control-label col-sm-4"><h4>Email-Id:</h4></div>
                 <div class="col-sm-8">
-                  <input type="text" readonly value="<?php echo $result['email']; ?>"class="form-control">
+                  <input type="text" readonly value="<?= $result['email']; ?>"class="form-control">
                 </div>
               </div>
             </div>
@@ -76,7 +80,7 @@ if(isset($update))
               <div class="row">
                 <div class="control-label col-sm-4"><h4>Mobile:</h4></div>
                 <div class="col-sm-8">
-                  <input type="text" name="phone" value="<?php echo $result['mobile']; ?>"class="form-control"/>
+                  <input type="text" name="phone" value="<?= $result['mobile']; ?>"class="form-control"/>
                 </div>
               </div>
             </div>
@@ -85,7 +89,7 @@ if(isset($update))
               <div class="row">
                 <div class="control-label col-sm-4"><h4>Address:</h4></div>
                 <div class="col-sm-8">
-                  <input type="text" name="address" value="<?php echo $result['address']; ?>"class="form-control"/>
+                  <input type="text" name="address" value="<?= $result['address']; ?>"class="form-control"/>
                 </div>
               </div>
             </div>
@@ -94,7 +98,7 @@ if(isset($update))
               <div class="row">
                 <div class="control-label col-sm-4"><h4>Gender:</h4></div>
                 <div class="col-sm-8">
-                  <strong><?php echo $result['gender']; ?></strong>
+                  <strong><?= $result['gender']; ?></strong>
                 </div>
               </div>
             </div>
