@@ -5,6 +5,7 @@ $count = $display->count_files("../image/$type");
 $files = $display->get_files("../image/$type");
 extract($_REQUEST);
 
+//Deletes A File And Makes Sure That The Existing File Are Numbered Correctly
 if(isset($delete)){
     unlink($delete);
     $files_2 = $display->get_files("../image/$type");
@@ -18,6 +19,7 @@ if(isset($delete)){
     }
     header('location:dashboard.php?option=room_carousel&id=' . $id . "&msg=<h3 style='color:orange'>Image Delete!</h3>");	
 }
+//Gets Error Message From _GET $msg And Outputs It
 if(isset($msg)){
 	echo $msg;
 }
@@ -39,6 +41,7 @@ if(isset($update)){
    header('location:dashboard.php?option=room_carousel&id=' . $id . "&msg=<h3 style='color:blue'>Images Added/Updated!</h3>");	
 }
 ?>
+
 <form method="post" enctype="multipart/form-data">
 	<table class="table table-bordered">	
         <?php if(is_dir("../image/$type")) : ?>
@@ -51,6 +54,7 @@ if(isset($update)){
                 </tr>
             <?php endfor; ?>
         <?php else : 
+            //Creates New Directory If There Isn't One Allready
             mkdir("../image/$type");
             header('location:dashboard.php?option=room_carousel&id=' . $id . "&msg=<h3 style='color:blue'>Directory Added!</h3>");	
             endif; 

@@ -1,12 +1,13 @@
 <?php 
 session_start();
-require_once($_SERVER['DOCUMENT_ROOT'] . '/hotel_management/classes/Display.php');
-extract($_REQUEST);
-
+//Check If Admin Is LoggedIN
 $admin = $_SESSION['admin_logged_in'];	
 if($admin == ""){
 	header('location:index.php');
 }
+
+require_once($_SERVER['DOCUMENT_ROOT'] . '/hotel_management/classes/Display.php');
+extract($_REQUEST);
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -18,16 +19,10 @@ if($admin == ""){
   <link href="dashboard.css" rel="stylesheet">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
-  <style>
-    /* Remove the navbar's default margin-bottom and rounded borders */ 
-    .navbar {
-      margin-bottom: 0;
-      border-radius: 0;
-    }
-  </style>
 </head>
 
 <body>
+  <!-- Top navbar -->
   <nav class="navbar navbar-inverse navbar-fixed-top">
     <div class="container-fluid">
       <div class="navbar-header">
@@ -39,6 +34,7 @@ if($admin == ""){
         </button>
         <a class="navbar-brand" href="#">Welcome <?= $admin; ?></a>
       </div>
+      <!-- Navbar Links -->
       <div id="navbar" class="navbar-collapse collapse">
         <ul class="nav navbar-nav navbar-right">
           <li><a href="dashboard.php?option=admin_profile">Profile</a></li>
@@ -50,6 +46,7 @@ if($admin == ""){
 
   <div class="container-fluid">
     <div class="row">
+      <!-- Sidebar Menu -->
       <div class="col-sm-3 col-md-2 sidebar">
         <ul class="nav nav-sidebar">
           <li><a href="dashboard.php?option=update_password">Update Password</a></li>
@@ -77,6 +74,7 @@ if($admin == ""){
             $opt = '';
           }
 
+          //Uses The Option _Get Variable To Get The Page That You Are On
           switch ($opt) {
             case 'feedback':
               include('feedback.php');	
@@ -140,9 +138,7 @@ if($admin == ""){
   </div>
   <?php include('Footer.php'); ?>
 
-  <!-- Bootstrap core JavaScript
-  ================================================== -->
-  <!-- Placed at the end of the document so the pages load faster -->
+  <!-- Bootstrap core JavaScript -->
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
   <script>window.jQuery || document.write('<script src="../../assets/js/vendor/jquery.min.js"><\/script>')</script>
   <script src="../../dist/js/bootstrap.min.js"></script>

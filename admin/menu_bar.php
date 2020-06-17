@@ -1,5 +1,7 @@
 <?php session_start();
 error_reporting(1);
+
+//This File Is Only Used In Admin/Index.php
 ?>
 
 <nav class="navbar navbar-inverse navbar-fixed-top">

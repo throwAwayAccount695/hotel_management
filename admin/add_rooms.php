@@ -4,6 +4,7 @@ if(isset($add)){
 	if(mysqli_num_rows($sql)){
 		echo "<h3 style='color:red'>this room is already added!</h3>";	
 	} else{	
+		//Names The Image File After The Room Type And Makes Sure That It Is Lowercase And Uses Underscores
 		$temp = explode('.', $_FILES['img']['name']);
 		$temp = end($temp);
 		$temp = str_replace(' ', '_', $type) . '.' . $temp;
