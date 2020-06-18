@@ -21,20 +21,18 @@
 		<th>Update</th>
 		<th>Delete</th>
 	</tr>
-	<?php 
-		$res = $display->select_all("rooms");
-		for($i = 0; $i < count($res); $i++) :
-	?>
-	<tr>
-		<td><?= $i + 1; ?></td>
-		<td><img src="<?= "../image/rooms/" . $res[$i]['image'];?>" width="50" height="50"/></td>
-		<td><?= $res[$i]['room_no']; ?></td>
-		<td><?= $res[$i]['type']; ?></td>
-		<td><?= $res[$i]['price']; ?></td>
-		<td><?= $res[$i]['details']; ?></td>
-		<td><a href="dashboard.php?option=room_carousel&id=<?= $res[$i]['room_id']; ?>"><span class="glyphicon glyphicon-pencil"></span></a></td>
-		<td><a href="dashboard.php?option=update_room&id=<?= $res[$i]['room_id']; ?>"><span class="glyphicon glyphicon-pencil"></span></a></td>
-		<td><a href="#" onclick="del_room('<?= $res[$i]['room_id']; ?>')"><span class="glyphicon glyphicon-remove" style='color:red'></span></a></td>
-	</tr>	
+	<?php $res = $display->select_all("rooms"); ?>
+	<?php for($i = 0; $i < count($res); $i++) : ?>
+		<tr>
+			<td><?= $i + 1; ?></td>
+			<td><img src="<?= "../image/rooms/" . $res[$i]['image'];?>" width="50" height="50"/></td>
+			<td><?= $res[$i]['room_no']; ?></td>
+			<td><?= $res[$i]['type']; ?></td>
+			<td><?= $res[$i]['price']; ?></td>
+			<td><?= $res[$i]['details']; ?></td>
+			<td><a href="dashboard.php?option=room_carousel&id=<?= $res[$i]['room_id']; ?>"><span class="glyphicon glyphicon-pencil"></span></a></td>
+			<td><a href="dashboard.php?option=update_room&id=<?= $res[$i]['room_id']; ?>"><span class="glyphicon glyphicon-pencil"></span></a></td>
+			<td><a href="#" onclick="del_room('<?= $res[$i]['room_id']; ?>')"><span class="glyphicon glyphicon-remove" style='color:red'></span></a></td>
+		</tr>	
 	<?php endfor; ?>	
 </table>

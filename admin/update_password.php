@@ -1,9 +1,11 @@
 <?php 
 if(isset($update)){
+	//hashes password with md5 and adds salt to the string.
 	$tmp = md5($op . $display->get_salt());
 	$sql = $display->select_all("admin WHERE username='$admin' AND password='$tmp'", TRUE);
 	if(mysqli_num_rows($sql)){
 		if($np == $cp){
+			//hashes password with md5 and adds salt to the string.
 			$display->update("admin", array("password" => md5($np . $display->get_salt())), array("username" => $admin));	
 			echo "<h3 style='color:blue'>Password updated successfully!</h3>";
 		} else{

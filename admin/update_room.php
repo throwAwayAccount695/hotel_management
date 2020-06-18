@@ -6,17 +6,20 @@ $check = $display->select_all("rooms");
 $duplicate = FALSE;
 extract($_REQUEST);
 
+//Echoes Out Error Messages From _GET Variables
 if(isset($msg)){
 	echo $msg;
 }
 
 if(isset($update)){
+	//Loops Through Room Numbers To Check If That Room Number Allready Exists 
 	for($i = 0; $i < count($check); $i++){
 		if($check[$i]['room_no'] == $room_no && $room_no != $res['room_no']){
 			$duplicate = TRUE;
 		}
 	}
 	if(!$duplicate){
+		//Check For File Name Change
 		if($type != $res['type']){
 			$old_str = str_replace(' ', '_', $res['type']);
 			$old_str = strtolower($old_str);
@@ -34,6 +37,7 @@ if(isset($update)){
 				rename($file, $new_path . '/' . str_replace($old_str, $new_str, $file_str));
 			}
 		}
+		//Check If A New Main Image Has Been Added
 		if($_FILES['img']['size'] != 0){
 			$temp = explode('.', $_FILES['img']['name']);
 			$temp = end($temp);

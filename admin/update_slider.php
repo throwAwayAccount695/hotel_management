@@ -9,7 +9,7 @@ if(isset($update)){
 		$arr = array("caption" => $cap);	
 	} else{
 		$arr = array("caption" => $cap, "image" => $img_new);	
-		//delete old image
+		//Deletes Old Image
 		unlink($path);
 		move_uploaded_file($_FILES['img']['tmp_name'],"../image/Slider/".$_FILES['img']['name']);
 	}

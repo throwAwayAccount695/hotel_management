@@ -16,10 +16,8 @@
 		<th>Update</th>
 		<th>Delete</th>
 	</tr>
-	<?php 
-		$sql = $display->select_all("slider");
-		for($i = 0; $i < count($sql); $i++) :
-	?>
+	<?php $sql = $display->select_all("slider"); ?>
+	<?php for($i = 0; $i < count($sql); $i++) : ?>
 		<tr>
 			<td><?= $i + 1; ?></td>
 			<td><img src="<?= "../image/Slider/" . $sql[$i]['image'];?>" width="50" height="50"/></td>
